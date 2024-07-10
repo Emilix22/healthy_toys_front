@@ -1,0 +1,21 @@
+:root {
+  --color1: #FF6700;
+  --color2: #EBEBEB;
+  --color3: #C0C0C0;
+  --color4: #3A6EA5;
+  --color5: #004E98;
+}
+
+.productslist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.title_section {
+  text-align: center;
+  color: var(--color1);
+  padding: 20px;
+}
