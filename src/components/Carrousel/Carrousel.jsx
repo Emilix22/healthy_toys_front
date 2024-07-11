@@ -5,39 +5,29 @@ import img2 from "../../assets/img2.jpg";
 import img3 from "../../assets/img3.jpg";
 import img4 from "../../assets/img4.jpg";
 import carrouselMove from "../../services/carrouselMove";
+import simulateMouseClick from "../../services/simulateMouseClick"
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import Header from "../Header/Header";
 
 
 function Carrousel() {
   const [thumbnail, setThumbnail] = useState();
   const [thumbnailItems, setThumbnailItems] = useState();
+  const rightButton = document.querySelector('.next');
 
   useEffect(() => {
     setThumbnail(document.querySelector(".slider .thumbnail"));
     setThumbnailItems(document.querySelectorAll(".thumbnail .item"));
-
+    
     thumbnail && thumbnail.appendChild(thumbnailItems[0]);
-  }, [thumbnail]);
 
+    setInterval(() => {simulateMouseClick(rightButton)},10000)
+    
+  }, [thumbnail]);
   
+  
+
   return (
     <main className="carrousel_container" id="top">
-      {/* <Header /> */}
-      {/* <header>
-        <img src="/healtyToys_logo.svg" alt="" />
-        <nav>
-          <Link to="#" class="active">Inicio</Link>
-          <Link to="#">Productos</Link>
-          <Link to="#">Contactos</Link>
-          <Link to="#">Sobre Nosotros</Link>
-        </nav>
-        <ul>
-            <Link to="#">User</Link>
-            <Link to="#"><ShoppingCartIcon /></Link>
-            <Link to="#"><FavoriteBorderIcon /></Link>
-        </ul>
-      </header> */}
 
       <section class="slider">
         <section class="list">
