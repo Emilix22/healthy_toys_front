@@ -1,15 +1,36 @@
-import React from 'react'
+import React, {useState} from 'react'
 import "./ProductsList.css"
 import ProductCard from '../ProductCard/ProductCard'
+import Filters from '../Filters/Filters'
 
 import img_2 from "../../assets/img2.jpg"
 import img_1 from "../../assets/img1.jpg"
 import img_3 from "../../assets/img3.jpg"
 
 function ProductsList() {
+
+  const [filters, setFilters] = useState({
+    category : 'all',
+    maxPrice: 30000
+  })
+
+
+const filterProducts = (products) => {
+    return products.filter(product => {
+        return (
+            product.price <= Number(filters.maxPrice) && 
+            (
+                filters.category == 'all' ||
+                product.category_id == filters.category
+            )
+        )
+    })
+}
+
   return (
-    <section>
-      <h1 className='title_section'>TODOS NUESTROS PRODUCTOS</h1>
+    <section id='products_section'>
+      <h1 className='title_section'>NUESTROS PRODUCTOS</h1>
+      <Filters setFilters={setFilters} filters={filters} />
       <section  className='productslist'>
       <ProductCard
          img={img_3} 

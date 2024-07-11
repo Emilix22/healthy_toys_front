@@ -11,11 +11,16 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .title_section {
   text-align: center;
   color: var(--color1);
   padding: 20px;
+}
+@media (min-width: 769px) {
+  #products_section {
+    padding-top: 50px;
+  }
 }

@@ -1,32 +1,34 @@
-// import React from 'react'
-// import "./Header.css"
-// import logoHealthyToys from "/healtyToys_logo.svg";
-// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-// import MenuIcon from '@mui/icons-material/Menu';
+import React from 'react'
+import "./Header.css"
+import { Link } from "react-router-dom";
+import { HashLink } from 'react-router-hash-link';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import logo from "../../assets/healtyToys_logo.svg"
+import MenuIcon from '@mui/icons-material/Menu';
+import scrollHeader from '../../services/scrollHeader';
 
 
-// function Header() {
-//   return (
-//     <header className='font-bold'>
-//       <img src={logoHealthyToys} className="logo" alt="logo" />
-//       <span className='hambMenu'><MenuIcon /></span>
-//       <nav>
-//         <ul>
-//           <li>Inicio</li>
-//           <li>Vía Pública</li>
-//           <li>Hogar</li>
-//           <li>Profesional</li>
-//           <li>Sobre Nosotros</li>
-//         </ul>
-//       </nav>
-//       <ul>
-//         <li>user</li>
-//         <li><ShoppingCartIcon /></li>
-//         <li><FavoriteBorderIcon /></li>
-//       </ul>
-//     </header>
-//   )
-// }
 
-// export default Header
+function Header() {
+  scrollHeader()
+  return (
+    <header>
+        <img src={logo} alt="logo" />
+        <span className='hambMenu'><MenuIcon /></span>
+        <nav>
+          <HashLink smooth to="/#top" /*className="active"*/>Inicio</HashLink>
+          <HashLink smooth to="/#products_section">Productos</HashLink>
+          <HashLink smooth to="/#contacts">Contactos</HashLink>
+          <Link to="#">Sobre Nosotros</Link>
+        </nav>
+        <ul>
+            <Link to="#">User</Link>
+            <Link to="#"><ShoppingCartIcon /></Link>
+            <Link to="#"><FavoriteBorderIcon /></Link>
+        </ul>
+      </header>
+  )
+}
+
+export default Header

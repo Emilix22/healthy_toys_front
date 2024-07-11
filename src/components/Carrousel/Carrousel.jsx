@@ -5,10 +5,8 @@ import img2 from "../../assets/img2.jpg";
 import img3 from "../../assets/img3.jpg";
 import img4 from "../../assets/img4.jpg";
 import carrouselMove from "../../services/carrouselMove";
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-
+import Header from "../Header/Header";
 
 
 function Carrousel() {
@@ -24,28 +22,26 @@ function Carrousel() {
 
   
   return (
-    <section className="carrousel_container">
-      <header>
+    <main className="carrousel_container" id="top">
+      {/* <Header /> */}
+      {/* <header>
         <img src="/healtyToys_logo.svg" alt="" />
         <nav>
-          <a href="#" class="active">
-            Inicio
-          </a>
-          <a href="#">Vía Pública</a>
-          <a href="#">Hogar</a>
-          <a href="#">Profesional</a>
-          <a href="#">Sobre Nosotros</a>
+          <Link to="#" class="active">Inicio</Link>
+          <Link to="#">Productos</Link>
+          <Link to="#">Contactos</Link>
+          <Link to="#">Sobre Nosotros</Link>
         </nav>
         <ul>
-            <a href="#">User</a>
-            <a href="#"><ShoppingCartIcon /></a>
-            <a href="#"><FavoriteBorderIcon /></a>
+            <Link to="#">User</Link>
+            <Link to="#"><ShoppingCartIcon /></Link>
+            <Link to="#"><FavoriteBorderIcon /></Link>
         </ul>
-      </header>
+      </header> */}
 
-      <div class="slider">
-        <div class="list">
-          <div class="item">
+      <section class="slider">
+        <section class="list">
+          <article class="item">
             <img src={img1} alt="" />
 
             <div class="content">
@@ -61,9 +57,9 @@ function Carrousel() {
                 <button><AddShoppingCartIcon /></button>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="item">
+          <article class="item">
             <img src={img2} alt="" />
 
             <div class="content">
@@ -79,9 +75,9 @@ function Carrousel() {
                 <button><AddShoppingCartIcon /></button>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="item">
+          <article class="item">
             <img src={img4} alt="" />
 
             <div class="content">
@@ -97,9 +93,9 @@ function Carrousel() {
                 <button><AddShoppingCartIcon /></button>
               </div>
             </div>
-          </div>
+          </article>
 
-          <div class="item">
+          <article class="item">
             <img src={img3} alt="" />
 
             <div class="content">
@@ -115,10 +111,10 @@ function Carrousel() {
                 <button><AddShoppingCartIcon /></button>
               </div>
             </div>
-          </div>
-        </div>
+          </article>
+        </section>
 
-        <div class="thumbnail">
+        <section class="thumbnail">
           <div class="item">
             <img src={img1} alt="" />
           </div>
@@ -131,14 +127,14 @@ function Carrousel() {
           <div class="item">
             <img src={img3} alt="" />
           </div>
-        </div>
+        </section>
 
         <div class="nextPrevArrows">
           <button class="prev" data-type="prev" onClick={carrouselMove}> Ant </button>
           <button class="next" data-type="next" onClick={carrouselMove}> Sig </button>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 }
 
