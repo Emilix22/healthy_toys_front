@@ -20,7 +20,7 @@ function Carrousel() {
     
     thumbnail && thumbnail.appendChild(thumbnailItems[0]);
 
-    setInterval(() => {simulateMouseClick(rightButton)},10000)
+    setInterval(() => {simulateMouseClick(rightButton)},20000)
     
   }, [thumbnail]);
   
@@ -29,99 +29,99 @@ function Carrousel() {
   return (
     <main className="carrousel_container" id="top">
 
-      <section class="slider">
-        <section class="list">
-          <article class="item">
+      <section className="slider">
+        <section className="list">
+          <article className="item">
             <img src={img1} alt="" />
 
-            <div class="content">
-              <div class="title">DESTACADO</div>
-              <div class="type">BOUNCER</div>
-              <div class="description">
+            <div className="content">
+              <div className="title">DESTACADO</div>
+              <div className="type">BOUNCER</div>
+              <div className="description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Deleniti temporibus quis eum consequuntur voluptate quae
                 doloribus distinctio. Possimus, sed recusandae. Lorem ipsum
                 dolor sit amet consectetur adipisicing elit. Sequi, aut.
               </div>
-              <div class="button">
+              <div className="button">
                 <button><AddShoppingCartIcon /></button>
               </div>
             </div>
           </article>
 
-          <article class="item">
+          <article className="item">
             <img src={img2} alt="" />
 
-            <div class="content">
-              <div class="title">DESTACADO</div>
-              <div class="type">ROLLINGBALL</div>
-              <div class="description">
+            <div className="content">
+              <div className="title">DESTACADO</div>
+              <div className="type">ROLLINGBALL</div>
+              <div className="description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Deleniti temporibus quis eum consequuntur voluptate quae
                 doloribus distinctio. Possimus, sed recusandae. Lorem ipsum
                 dolor sit amet consectetur adipisicing elit. Sequi, aut.
               </div>
-              <div class="button">
+              <div className="button">
                 <button><AddShoppingCartIcon /></button>
               </div>
             </div>
           </article>
 
-          <article class="item">
+          <article className="item">
             <img src={img4} alt="" />
 
-            <div class="content">
-              <div class="title">DESTACADO</div>
-              <div class="type">DOMINATOR</div>
-              <div class="description">
+            <div className="content">
+              <div className="title">DESTACADO</div>
+              <div className="type">DOMINATOR</div>
+              <div className="description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Deleniti temporibus quis eum consequuntur voluptate quae
                 doloribus distinctio. Possimus, sed recusandae. Lorem ipsum
                 dolor sit amet consectetur adipisicing elit. Sequi, aut.
               </div>
-              <div class="button">
+              <div className="button">
                 <button><AddShoppingCartIcon /></button>
               </div>
             </div>
           </article>
 
-          <article class="item">
+          <article className="item">
             <img src={img3} alt="" />
 
-            <div class="content">
-              <div class="title">DESTACADO</div>
-              <div class="type">STARTING</div>
-              <div class="description">
+            <div className="content">
+              <div className="title">DESTACADO</div>
+              <div className="type">STARTING</div>
+              <div className="description">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Deleniti temporibus quis eum consequuntur voluptate quae
                 doloribus distinctio. Possimus, sed recusandae. Lorem ipsum
                 dolor sit amet consectetur adipisicing elit. Sequi, aut.
               </div>
-              <div class="button">
+              <div className="button">
                 <button><AddShoppingCartIcon /></button>
               </div>
             </div>
           </article>
         </section>
 
-        <section class="thumbnail">
-          <div class="item">
+        <section className="thumbnail">
+          <div className="item">
             <img src={img1} alt="" />
           </div>
-          <div class="item">
+          <div className="item">
             <img src={img2} alt="" />
           </div>
-          <div class="item">
+          <div className="item">
             <img src={img4} alt="" />
           </div>
-          <div class="item">
+          <div className="item">
             <img src={img3} alt="" />
           </div>
         </section>
 
-        <div class="nextPrevArrows">
-          <button class="prev" data-type="prev" onClick={carrouselMove}> Ant </button>
-          <button class="next" data-type="next" onClick={carrouselMove}> Sig </button>
+        <div className="nextPrevArrows">
+          <button className="prev" data-type="prev" onClick={carrouselMove}> Ant </button>
+          <button className="next" data-type="next" onClick={carrouselMove}> Sig </button>
         </div>
       </section>
     </main>
