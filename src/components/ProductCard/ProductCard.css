@@ -34,6 +34,7 @@
 }
 .product_card img {
   border-radius: 6px;
+  height: 40%;
 }
 .product_card .add_fav {
   display: flex;

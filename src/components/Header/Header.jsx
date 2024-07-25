@@ -1,34 +1,50 @@
-import React from 'react'
-import "./Header.css"
+import React from "react";
+import "./Header.css";
 import { Link } from "react-router-dom";
-import { HashLink } from 'react-router-hash-link';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import logo from "../../assets/healtyToys_logo.svg"
-import MenuIcon from '@mui/icons-material/Menu';
-import scrollHeader from '../../services/scrollHeader';
-
-
+import { HashLink } from "react-router-hash-link";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import logo from "../../assets/logoHT.svg";
+import MenuIcon from "@mui/icons-material/Menu";
+import scrollHeader from "../../services/scrollHeader";
+import menuActive from "../../services/menuActive"
 
 function Header() {
-  scrollHeader()
+  scrollHeader();
   return (
-    <header>
-        <img src={logo} alt="logo" />
-        <span className='hambMenu'><MenuIcon /></span>
-        <nav>
-          <HashLink smooth to="/#top" /*className="active"*/>Inicio</HashLink>
-          <HashLink smooth to="/#products_section">Productos</HashLink>
-          <HashLink smooth to="/#contacts">Contactos</HashLink>
-          <Link to="#">Sobre Nosotros</Link>
-        </nav>
-        <ul>
-            <Link to="#">User</Link>
-            <Link to="#"><ShoppingCartIcon /></Link>
-            <Link to="#"><FavoriteBorderIcon /></Link>
+    <header id="up">
+      <img src={logo} alt="logo" />
+      <button className="hambMenu" onClick={menuActive}>
+        <span className="br1"></span>
+        <span className="br2"></span>
+        <span className="br3"></span>
+      </button>
+      <nav>
+        <ul className="navLinks">
+          <HashLink smooth to="/e_commerce/#top" onClick={menuActive} >
+            Inicio
+          </HashLink>
+          <HashLink smooth to="/e_commerce/#products_section" onClick={menuActive} >
+            Productos
+          </HashLink>
+          <HashLink smooth to="/e_commerce/#contacts" onClick={menuActive} >
+            Contactos
+          </HashLink>
+          <Link to="#" onClick={menuActive} >Sobre Nosotros</Link>
         </ul>
-      </header>
-  )
+        <ul>
+          <Link to="#" onClick={menuActive}>Registrarse</Link>
+          <Link to="#" onClick={menuActive}>Iniciar Sesión</Link>
+          <Link to="#" onClick={menuActive}>
+            <ShoppingCartIcon />
+          </Link>
+          <Link to="#" onClick={menuActive}>
+            <FavoriteBorderIcon />
+          </Link>
+        </ul>
+      </nav>
+    </header>
+  );
 }
 
-export default Header
+export default Header;

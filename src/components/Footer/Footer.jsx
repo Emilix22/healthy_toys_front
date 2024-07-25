@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
-import XIcon from "@mui/icons-material/X";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
 import YoutubeIcon from "@mui/icons-material/Youtube";
+import logo from "../../assets/g24.svg"
 import "./Footer.css";
 
 function Footer() {
@@ -13,12 +13,7 @@ function Footer() {
     <footer id="contacts">
       <section className="up_footer">
         <article className="articles_footer">
-          <h3>Legales</h3>
-          <div className="contacts_footer">
-            <Link id="terms" to="#" target="_blank">
-              Leer Términos y Condiciones
-            </Link>
-          </div>
+        <img className="logo_footer" src={logo} alt="logo" />
         </article>
         <article className="articles_footer">
           <h3>Oficinas</h3>

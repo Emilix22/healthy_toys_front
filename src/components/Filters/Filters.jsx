@@ -23,6 +23,7 @@ function Filters({ setFilters, filters }) {
             <article>
                 <label htmlFor="price">Precio Máximo</label>
                 <input
+                className='input_range'
                  type="range"
                  id='price_range'
                  min='6000.00'
@@ -30,6 +31,7 @@ function Filters({ setFilters, filters }) {
                  value={filters.maxPrice}
                  onChange={handleChangeMaxPrice}/>
                  <span>${filters.maxPrice}</span>
+                 {/* <input class="drag__bar" type="range" min="0" max="4" name="myRange" id="myRange"></input> */}
             </article>
 
             <article>
