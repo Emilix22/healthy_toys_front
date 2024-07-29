@@ -5,6 +5,9 @@
   --color4: #3A6EA5;
   --color5: #004e98;
 }
+.home_container {
+  position: relative;
+}
 .buttonUp {
   display: none;
   justify-content: center;

@@ -33,8 +33,8 @@ function Header() {
           <Link to="#" onClick={menuActive} >Sobre Nosotros</Link>
         </ul>
         <ul>
-          <Link to="#" onClick={menuActive}>Registrarse</Link>
-          <Link to="#" onClick={menuActive}>Iniciar Sesión</Link>
+          <Link to="/e_commerce/register" onClick={menuActive}>Registrarse</Link>
+          <Link to="/e_commerce/login" onClick={menuActive}>Iniciar Sesión</Link>
           <Link to="#" onClick={menuActive}>
             <ShoppingCartIcon />
           </Link>
