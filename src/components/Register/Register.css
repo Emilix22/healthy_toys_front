@@ -13,10 +13,10 @@
 }
 
 .formRegister_container {
-  margin: 47px;
+  margin: 80px;
 }
 .formLogin_container {
-  margin: 168px;
+  margin: 170px;
 }
 
 .form {
@@ -24,7 +24,7 @@
   flex-direction: column;
   gap: 10px;
   max-width: 350px;
-  padding: 20px 20px 3px 20px;
+  padding: 20px;
   border-radius: 20px;
   box-shadow: 2px 4px 10px 1px rgba(255, 103, 0, 0.47);
   position: relative;
@@ -106,7 +106,7 @@
   font-size: large;
 }
 .msg-error {
-  color: var(--color6);
+  color: var(--color1);
   font-size: 14px;
 }
 .signin {

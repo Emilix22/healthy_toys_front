@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import PasswordChecklist from "react-password-checklist";
-import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./Register.css";
+import clearInputs from "../../services/clearInputs";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
@@ -12,15 +14,14 @@ function Register() {
 
   const [errors, setErrors] = useState(); // errores front
   const [errorsBack, setErrorsBack] = useState(); //errores back
+  const history = useNavigate();
 
   const [infoRegisterForm, setInfoRegisterForm] = useState(
     {
     name: "",
     surname: "",
-    dni: "",
     email: "",
     password: "",
-    avatar: "",
     }
   );
 
@@ -28,10 +29,8 @@ function Register() {
 
   formData.append("name", infoRegisterForm.name);
   formData.append("surname", infoRegisterForm.surname);
-  formData.append("dni", infoRegisterForm.dni);
   formData.append("email", infoRegisterForm.email);
   formData.append("password", infoRegisterForm.password);
-  formData.append("avatar", infoRegisterForm.avatar);
 
   const handleRegister = (event) => {
     event.preventDefault();
@@ -42,7 +41,7 @@ function Register() {
     })
       .then((res) => res.json())
       .then((info) => {
-       return console.log(info);
+       //console.log(info);
         {
           if (info.error) {
             setErrorsBack(info.error);
@@ -55,9 +54,14 @@ function Register() {
               showConfirmButton: false,
               timer: 2500,
             });
-            setInfoRegisterForm(infoRegisterFormDefault);
-            //clearInputs();
-            //history("/");
+            setInfoRegisterForm({
+              name: "",
+              surname: "",
+              email: "",
+              password: "",
+              });
+            clearInputs();
+            history("/e_commerce/login");
           }
         }
       })
@@ -69,7 +73,6 @@ function Register() {
   const expressions = {
     name: /^[a-zA-ZÀ-ÿ\s]{2,60}$/,
     surname: /^[a-zA-ZÀ-ÿ\s]{2,60}$/,
-    dni: /^\d{8,8}$/,
     email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
   };
 
@@ -100,16 +103,6 @@ function Register() {
         });
       }
     },
-    dni: () => {
-      if (
-        expressions.dni.test(infoRegisterForm.dni) &&
-        infoRegisterForm.dni != ""
-      ) {
-        setErrors({ ...errors, dni: "" });
-      } else {
-        setErrors({ ...errors, dni: "Requerido - sólo números, 8 caracteres" });
-      }
-    },
     email: () => {
       if (
         expressions.email.test(infoRegisterForm.email) &&
@@ -122,9 +115,9 @@ function Register() {
     },
   };
 
-  // useEffect(() => {
-  //   setErrorsBack("");
-  // }, [])
+  useEffect(() => {
+    setErrorsBack("");
+  }, [])
   /************************************************************************************************ */
   
   return (
@@ -152,7 +145,7 @@ function Register() {
                 onChange={(e) =>
                   setInfoRegisterForm({
                     ...infoRegisterForm,
-                    name: e.target.value,
+                    name: e.target.value.toUpperCase(),
                   })
                 }
                 onKeyUp={validations.name}
@@ -181,7 +174,7 @@ function Register() {
                 onChange={(e) =>
                   setInfoRegisterForm({
                     ...infoRegisterForm,
-                    surname: e.target.value,
+                    surname: e.target.value.toUpperCase(),
                   })
                 }
                 onKeyUp={validations.surname}
@@ -200,35 +193,6 @@ function Register() {
                 )}
             </label>
           </div>
-
-          <label>
-            <input
-              required
-              type="text"
-              name="dni"
-              className="input"
-              value={infoRegisterForm.dni}
-              onChange={(e) =>
-                setInfoRegisterForm({
-                  ...infoRegisterForm,
-                  dni: e.target.value,
-                })
-              }
-              onKeyUp={validations.dni}
-              onBlur={validations.dni}
-            />
-            <span>DNI</span>
-            {errors && errors.dni ? (
-                <span className="msg-error">{errors.dni}</span>
-              ) : (
-                ""
-              )}
-              {errorsBack && errorsBack.dni ? (
-                <span className="msg-error">{errorsBack.dni.msg}</span>
-              ) : (
-                ""
-              )}
-          </label>
 
           <label>
             <input
@@ -305,16 +269,6 @@ function Register() {
           <button className="submit" onClick={handleRegister}>
             Enviar
           </button>
-          <p className="signin">
-            ¿Ya tienes cuenta?{" "}
-            <a
-            // onClick={() => {
-            //   setLogReg(false), setErrorsBack("");
-            // }}
-            >
-              Inicia sesión
-            </a>
-          </p>
         </form>
       </div>
       <Footer />
