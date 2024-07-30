@@ -8,7 +8,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 function ProductCard(props) {
   return (
     <article className='product_card font-regular'>
-      <img src={props.img} alt="img_demo" />
+      <img src={props.img} alt="img_product" />
       <div className='title_category'>
         <h3 className='title'>{props.productName}</h3>
         <span className='category'>{props.category}</span> 

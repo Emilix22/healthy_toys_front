@@ -13,10 +13,10 @@
 }
 
 .formRegister_container {
-  margin: 80px;
+  margin: 80px auto;
 }
 .formLogin_container {
-  margin: 170px;
+  margin: 170px auto;
 }
 
 .form {

@@ -10,10 +10,12 @@ function App() {
   return (
     <>
       <Routes>
+
         <Route path="/" element={<SelectSite />} />  
-        <Route path="/e_commerce" element={<Home />} />  
+        <Route path="/e_commerce" element={<Home />} />        
         <Route path="/e_commerce/register" element={<Register />} />  
-        <Route path="/e_commerce/login" element={<Login />} />  
+        <Route path="/e_commerce/login" element={<Login />} />           
+         
       </Routes>
       
     </>

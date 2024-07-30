@@ -1,6 +1,28 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import clearInputs from "../services/clearInputs";
+const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 
-const handleRegister = (event) => {
-  event.preventDefault();
+const [errors, setErrors] = useState(); // errores front
+const [errorsBack, setErrorsBack] = useState(); //errores back
+const history = useNavigate();
+
+const [infoRegisterForm, setInfoRegisterForm] = useState({
+  name: "",
+  surname: "",
+  email: "",
+  password: "",
+});
+
+const formData = new FormData();
+
+formData.append("name", infoRegisterForm.name);
+formData.append("surname", infoRegisterForm.surname);
+formData.append("email", infoRegisterForm.email);
+formData.append("password", infoRegisterForm.password);
+
+const useFetch = (url, options) => {
 
   fetch(`${BASE_URL}/users/create`, {
     method: "POST",
@@ -21,10 +43,14 @@ const handleRegister = (event) => {
             showConfirmButton: false,
             timer: 2500,
           });
-          setInfoRegisterForm(infoRegisterFormDefault);
+          setInfoRegisterForm({
+            name: "",
+            surname: "",
+            email: "",
+            password: "",
+          });
           clearInputs();
-          setLogReg(false);
-          history("/");
+          history("/e_commerce/login");
         }
       }
     })
