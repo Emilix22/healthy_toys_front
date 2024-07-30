@@ -6,32 +6,29 @@ import img3 from "../../assets/img3.jpg";
 import img4 from "../../assets/img4.jpg";
 import { Link } from "react-router-dom";
 import carrouselMove from "../../services/carrouselMove";
-import simulateMouseClick from "../../services/simulateMouseClick"
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
-import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
-import NavigateNextIcon from '@mui/icons-material/NavigateNext';
-
+import simulateMouseClick from "../../services/simulateMouseClick";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 function Carrousel() {
   const [thumbnail, setThumbnail] = useState();
   const [thumbnailItems, setThumbnailItems] = useState();
-  const rightButton = document.querySelector('.next');
+  const rightButton = document.querySelector(".next");
 
   useEffect(() => {
     setThumbnail(document.querySelector(".slider .thumbnail"));
     setThumbnailItems(document.querySelectorAll(".thumbnail .item"));
-    
+
     thumbnail && thumbnail.appendChild(thumbnailItems[0]);
 
-    setInterval(() => {simulateMouseClick(rightButton)},10000)
-    
+    setInterval(() => {
+      simulateMouseClick(rightButton);
+    }, 10000);
   }, [thumbnail]);
-  
-  
 
   return (
     <main className="carrousel_container" id="top">
-
       <section className="slider">
         <section className="list">
           <article className="item">
@@ -47,7 +44,9 @@ function Carrousel() {
                 dolor sit amet consectetur adipisicing elit. Sequi, aut.
               </div>
               <div className="button">
-                <button><AddShoppingCartIcon /></button>
+                <button>
+                  <AddShoppingCartIcon />
+                </button>
               </div>
             </div>
           </article>
@@ -65,7 +64,9 @@ function Carrousel() {
                 dolor sit amet consectetur adipisicing elit. Sequi, aut.
               </div>
               <div className="button">
-                <button><AddShoppingCartIcon /></button>
+                <button>
+                  <AddShoppingCartIcon />
+                </button>
               </div>
             </div>
           </article>
@@ -83,7 +84,9 @@ function Carrousel() {
                 dolor sit amet consectetur adipisicing elit. Sequi, aut.
               </div>
               <div className="button">
-                <button><AddShoppingCartIcon /></button>
+                <button>
+                  <AddShoppingCartIcon />
+                </button>
               </div>
             </div>
           </article>
@@ -101,7 +104,9 @@ function Carrousel() {
                 dolor sit amet consectetur adipisicing elit. Sequi, aut.
               </div>
               <div className="button">
-                <button><AddShoppingCartIcon /></button>
+                <button>
+                  <AddShoppingCartIcon />
+                </button>
               </div>
             </div>
           </article>
@@ -123,8 +128,12 @@ function Carrousel() {
         </section>
 
         <div className="nextPrevArrows">
-          <button className="prev" data-type="prev" onClick={carrouselMove}>Ant</button>
-          <button className="next" data-type="next" onClick={carrouselMove}>Sig</button>
+          <button className="prev" data-type="prev" onClick={carrouselMove}>
+            Ant
+          </button>
+          <button className="next" data-type="next" onClick={carrouselMove}>
+            Sig
+          </button>
         </div>
       </section>
     </main>

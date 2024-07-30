@@ -9,21 +9,18 @@ import Footer from "../Footer/Footer";
 const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 
 function Register() {
-
   /***************************************pasar a useFetch************************************** */
 
   const [errors, setErrors] = useState(); // errores front
   const [errorsBack, setErrorsBack] = useState(); //errores back
   const history = useNavigate();
 
-  const [infoRegisterForm, setInfoRegisterForm] = useState(
-    {
+  const [infoRegisterForm, setInfoRegisterForm] = useState({
     name: "",
     surname: "",
     email: "",
     password: "",
-    }
-  );
+  });
 
   const formData = new FormData();
 
@@ -34,14 +31,14 @@ function Register() {
 
   const handleRegister = (event) => {
     event.preventDefault();
-  
+
     fetch(`${BASE_URL}/users/create`, {
       method: "POST",
       body: formData,
     })
       .then((res) => res.json())
       .then((info) => {
-       //console.log(info);
+        //console.log(info);
         {
           if (info.error) {
             setErrorsBack(info.error);
@@ -59,7 +56,7 @@ function Register() {
               surname: "",
               email: "",
               password: "",
-              });
+            });
             clearInputs();
             history("/e_commerce/login");
           }
@@ -117,9 +114,9 @@ function Register() {
 
   useEffect(() => {
     setErrorsBack("");
-  }, [])
+  }, []);
   /************************************************************************************************ */
-  
+
   return (
     <main className="register_container">
       <Header />
@@ -130,10 +127,10 @@ function Register() {
             Regístrate ahora y obtén el mejor entrenamiento!
           </p>
           {errorsBack && errorsBack.userInDB ? (
-              <span className="msg-error">{errorsBack.userInDB}</span>
-            ) : (
-              ""
-            )}
+            <span className="msg-error">{errorsBack.userInDB}</span>
+          ) : (
+            ""
+          )}
           <div className="flex">
             <label>
               <input
@@ -153,15 +150,15 @@ function Register() {
               />
               <span>Nombre</span>
               {errors && errors.name ? (
-                  <span className="msg-error">{errors.name}</span>
-                ) : (
-                  ""
-                )}
-                {errorsBack && errorsBack.name ? (
-                  <span className="msg-error">{errorsBack.name.msg}</span>
-                ) : (
-                  ""
-                )}
+                <span className="msg-error">{errors.name}</span>
+              ) : (
+                ""
+              )}
+              {errorsBack && errorsBack.name ? (
+                <span className="msg-error">{errorsBack.name.msg}</span>
+              ) : (
+                ""
+              )}
             </label>
 
             <label>
@@ -182,15 +179,15 @@ function Register() {
               />
               <span>Apellido</span>
               {errors && errors.surname ? (
-                  <span className="msg-error">{errors.surname}</span>
-                ) : (
-                  ""
-                )}
-                {errorsBack && errorsBack.surname ? (
-                  <span className="msg-error">{errorsBack.surname.msg}</span>
-                ) : (
-                  ""
-                )}
+                <span className="msg-error">{errors.surname}</span>
+              ) : (
+                ""
+              )}
+              {errorsBack && errorsBack.surname ? (
+                <span className="msg-error">{errorsBack.surname.msg}</span>
+              ) : (
+                ""
+              )}
             </label>
           </div>
 
@@ -212,15 +209,15 @@ function Register() {
             />
             <span>Email</span>
             {errors && errors.email ? (
-                <span className="msg-error">{errors.email}</span>
-              ) : (
-                ""
-              )}
-              {errorsBack && errorsBack.email ? (
-                <span className="msg-error">{errorsBack.email.msg}</span>
-              ) : (
-                ""
-              )}
+              <span className="msg-error">{errors.email}</span>
+            ) : (
+              ""
+            )}
+            {errorsBack && errorsBack.email ? (
+              <span className="msg-error">{errorsBack.email.msg}</span>
+            ) : (
+              ""
+            )}
           </label>
 
           <label>
@@ -240,10 +237,10 @@ function Register() {
             <span>Password</span>
 
             {errorsBack && errorsBack.password ? (
-                <span className="msg-error">{errorsBack.password.msg}</span>
-              ) : (
-                ""
-              )}
+              <span className="msg-error">{errorsBack.password.msg}</span>
+            ) : (
+              ""
+            )}
           </label>
           <span>
             <i>

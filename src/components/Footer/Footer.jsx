@@ -5,7 +5,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
 import YoutubeIcon from "@mui/icons-material/Youtube";
-import logo from "../../assets/g24.svg"
+import logo from "../../assets/g24.svg";
 import "./Footer.css";
 
 function Footer() {
@@ -13,7 +13,7 @@ function Footer() {
     <footer id="contacts">
       <section className="up_footer">
         <article className="articles_footer">
-        <img className="logo_footer" src={logo} alt="logo" />
+          <img className="logo_footer" src={logo} alt="logo" />
         </article>
         <article className="articles_footer">
           <h3>Oficinas</h3>

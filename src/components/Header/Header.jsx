@@ -5,9 +5,8 @@ import { HashLink } from "react-router-hash-link";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import logo from "../../assets/logoHT.svg";
-import MenuIcon from "@mui/icons-material/Menu";
 import scrollHeader from "../../services/scrollHeader";
-import menuActive from "../../services/menuActive"
+import menuActive from "../../services/menuActive";
 
 function Header() {
   scrollHeader();
@@ -21,20 +20,30 @@ function Header() {
       </button>
       <nav>
         <ul className="navLinks">
-          <HashLink smooth to="/e_commerce/#top" onClick={menuActive} >
+          <HashLink smooth to="/e_commerce/#top" onClick={menuActive}>
             Inicio
           </HashLink>
-          <HashLink smooth to="/e_commerce/#products_section" onClick={menuActive} >
+          <HashLink
+            smooth
+            to="/e_commerce/#products_section"
+            onClick={menuActive}
+          >
             Productos
           </HashLink>
-          <HashLink smooth to="/e_commerce/#contacts" onClick={menuActive} >
+          <HashLink smooth to="/e_commerce/#contacts" onClick={menuActive}>
             Contactos
           </HashLink>
-          <Link to="#" onClick={menuActive} >Sobre Nosotros</Link>
+          <Link to="#" onClick={menuActive}>
+            Sobre Nosotros
+          </Link>
         </ul>
         <ul>
-          <Link to="/e_commerce/register" onClick={menuActive}>Registrarse</Link>
-          <Link to="/e_commerce/login" onClick={menuActive}>Iniciar Sesión</Link>
+          <Link to="/e_commerce/register" onClick={menuActive}>
+            Registrarse
+          </Link>
+          <Link to="/e_commerce/login" onClick={menuActive}>
+            Iniciar Sesión
+          </Link>
           <Link to="#" onClick={menuActive}>
             <ShoppingCartIcon />
           </Link>
