@@ -1,59 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Cookie from "js-cookie";
+import React, { useContext, useEffect, useState } from "react";
+import { LoginContext } from "../../context/loginContext";
 import "../Register/Register.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 
 function Login() {
-  const [userEmail, setUserEmail] = useState();
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState("");
-  const [rememberUser, setRememberUser] = useState();
-  const history = useNavigate();
-  const [errorsBack, setErrorsBack] = useState(); //errores back
 
-  const handleLogin = (event) => {
-    event.preventDefault();
-
-    fetch(`${BASE_URL}/users/login`, {
-      method: "POST",
-      body: JSON.stringify({
-        email: userEmail,
-        password: password,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((info) => {
-        //console.log(info)
-        {
-          if (info.error) {
-            setErrorsBack(info.error);
-          } else {
-            setUser(info);
-            setUserEmail("");
-            setPassword("");
-
-            if (rememberUser) {
-              Cookie.set("userLogin", JSON.stringify(info), {
-                expires: 7,
-                secure: true,
-                sameSite: "strict",
-                path: "/e_commerce",
-              });
-            }
-            history("/e_commerce");
-          }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const {
+    errorsBack,
+    setErrorsBack,
+    userEmail,
+    setUserEmail,
+    password,
+    setPassword,
+    setRememberUser,
+    handleLogin,
+  } = useContext(LoginContext);
 
   useEffect(() => {
     setErrorsBack("");

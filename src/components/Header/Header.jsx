@@ -44,7 +44,7 @@ function Header() {
           <Link to="/e_commerce/login" onClick={menuActive}>
             Iniciar Sesión
           </Link>
-          <Link to="#" onClick={menuActive}>
+          <Link to="/e_commerce/cart" onClick={menuActive}>
             <ShoppingCartIcon />
           </Link>
           <Link to="#" onClick={menuActive}>

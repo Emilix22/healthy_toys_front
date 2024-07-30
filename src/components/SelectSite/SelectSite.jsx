@@ -13,7 +13,7 @@ function SelectSite() {
       </video>
       <section className="select">
         <Link id="linkTutorials" to="#">
-          <span>TUTORIALES</span> <YoutubeIcon fontSize="inherit" />{" "}
+          <span>TUTORIALES</span> <YoutubeIcon fontSize="inherit" />
         </Link>
         <div className="logoHello">
           <img src={logo} alt="logo" />

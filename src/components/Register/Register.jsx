@@ -1,71 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { AppContext } from "../../context/appContext";
+import { RegisterContext } from "../../context/registerContext";
 import PasswordChecklist from "react-password-checklist";
-import Swal from "sweetalert2";
 import "./Register.css";
-import clearInputs from "../../services/clearInputs";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 
 function Register() {
-  /***************************************pasar a useFetch************************************** */
 
-  const [errors, setErrors] = useState(); // errores front
-  const [errorsBack, setErrorsBack] = useState(); //errores back
-  const history = useNavigate();
+  const {
+    errors,
+    setErrors,
+  } = useContext(AppContext);
 
-  const [infoRegisterForm, setInfoRegisterForm] = useState({
-    name: "",
-    surname: "",
-    email: "",
-    password: "",
-  });
-
-  const formData = new FormData();
-
-  formData.append("name", infoRegisterForm.name);
-  formData.append("surname", infoRegisterForm.surname);
-  formData.append("email", infoRegisterForm.email);
-  formData.append("password", infoRegisterForm.password);
-
-  const handleRegister = (event) => {
-    event.preventDefault();
-
-    fetch(`${BASE_URL}/users/create`, {
-      method: "POST",
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((info) => {
-        //console.log(info);
-        {
-          if (info.error) {
-            setErrorsBack(info.error);
-          } else {
-            Swal.fire({
-              position: "center",
-              width: 400,
-              icon: "success",
-              title: `Usuario ${infoRegisterForm.name} ${infoRegisterForm.surname} registrado correctamente!`,
-              showConfirmButton: false,
-              timer: 2500,
-            });
-            setInfoRegisterForm({
-              name: "",
-              surname: "",
-              email: "",
-              password: "",
-            });
-            clearInputs();
-            history("/e_commerce/login");
-          }
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const {
+    errorsBack,
+    setErrorsBack,
+    infoRegisterForm,
+    setInfoRegisterForm,
+    handleRegister,
+  } = useContext(RegisterContext);
 
   const expressions = {
     name: /^[a-zA-ZÀ-ÿ\s]{2,60}$/,
@@ -115,8 +69,7 @@ function Register() {
   useEffect(() => {
     setErrorsBack("");
   }, []);
-  /************************************************************************************************ */
-
+  
   return (
     <main className="register_container">
       <Header />
