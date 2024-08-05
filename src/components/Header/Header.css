@@ -75,6 +75,7 @@ header a{
 }
 header nav.activeMenu {
   display: flex;
+  margin-top: 10px;
 }
 
 .br1.animated {

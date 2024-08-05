@@ -1,23 +1,52 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-import "../Register/Register.css";
-import clearInputs from "../../services/clearInputs";
+import React, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../context/appContext";
+import { ProductContext } from "../../context/productContext";
+import "./ProductCreate.css";
+
 import Header from "../Header/Header";
 const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 
 function ProductCreate() {
+  const { user } = useContext(AppContext);
+  const {
+    infoProductForm,
+    setInfoProductForm,
+    errorsBack,
+    productCreate,
+  } = useContext(ProductContext);
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch(`${BASE_URL}/categories`, {
+      method: "POST",
+      body: JSON.stringify({}),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((info) => {
+        //console.log(info)
+        setCategories(info);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
-    <main className="register_container">
+    <main className="productCreate_container">
       <Header />
       <div className="formRegister_container">
-        <form className="form" id="form_register">
+        <form className="form" id="form_product_create">
           <p className="title_login">Agregar Producto al E-Commerce</p>
-          {/* {errorsBack && errorsBack.userInDB ? (
+          {errorsBack && errorsBack.userInDB ? (
             <span className="msg-error">{errorsBack.userInDB}</span>
           ) : (
             ""
-          )} */}
+          )}
           <div className="flex">
             <label>
               <input
@@ -25,13 +54,13 @@ function ProductCreate() {
                 type="text"
                 name="name"
                 className="input"
-                // value={infoRegisterForm.name}
-                // onChange={(e) =>
-                //   setInfoRegisterForm({
-                //     ...infoRegisterForm,
-                //     name: e.target.value.toUpperCase(),
-                //   })
-                // }
+                value={infoProductForm.name}
+                onChange={(e) =>
+                  setInfoProductForm({
+                    ...infoProductForm,
+                    name: e.target.value.toUpperCase(),
+                  })
+                }
                 // onKeyUp={validations.name}
                 // onBlur={validations.name}
               />
@@ -40,41 +69,46 @@ function ProductCreate() {
                 <span className="msg-error">{errors.name}</span>
               ) : (
                 ""
-              )}
+              )} */}
               {errorsBack && errorsBack.name ? (
                 <span className="msg-error">{errorsBack.name.msg}</span>
               ) : (
                 ""
-              )} */}
+              )}
             </label>
 
             <label>
-              <input
+              <select
                 required
-                type="text"
                 name="category"
                 className="input"
-                // value={infoRegisterForm.category}
-                // onChange={(e) =>
-                //   setInfoRegisterForm({
-                //     ...infoRegisterForm,
-                //     category: e.target.value.toUpperCase(),
-                //   })
-                // }
+                value={infoProductForm.category}
+                onChange={(e) =>
+                  setInfoProductForm({
+                    ...infoProductForm,
+                    category: e.target.value.toUpperCase(),
+                  })
+                }
                 // onKeyUp={validations.category}
                 // onBlur={validations.category}
-              />
+              >
+                <option value=""></option>
+                {categories.data &&
+                  categories.data.map((cat) => {
+                    return <option value={cat.id_category} key={cat.id_category}>{cat.name}</option>;
+                  })}
+              </select>
               <span>Categoría</span>
-              {/* {errors && errors.surname ? (
-                <span className="msg-error">{errors.surname}</span>
-              ) : (
-                ""
-              )}
-              {errorsBack && errorsBack.surname ? (
-                <span className="msg-error">{errorsBack.surname.msg}</span>
+              {/* {errors && errors.category ? (
+                <span className="msg-error">{errors.category}</span>
               ) : (
                 ""
               )} */}
+              {errorsBack && errorsBack.category ? (
+                <span className="msg-error">{errorsBack.category.msg}</span>
+              ) : (
+                ""
+              )}
             </label>
           </div>
 
@@ -84,128 +118,132 @@ function ProductCreate() {
               type="number"
               name="price"
               className="input"
-              // value={infoRegisterForm.price}
-              // onChange={(e) =>
-              //   setInfoRegisterForm({
-              //     ...infoRegisterForm,
-              //     price: e.target.value,
-              //   })
-              // }
+              value={infoProductForm.price}
+              onChange={(e) =>
+                setInfoProductForm({
+                  ...infoProductForm,
+                  price: e.target.value,
+                })
+              }
               // onKeyUp={validations.price}
               // onBlur={validations.price}
             />
             <span>Precio</span>
-            {/* {errors && errors.email ? (
-              <span className="msg-error">{errors.email}</span>
-            ) : (
-              ""
-            )}
-            {errorsBack && errorsBack.email ? (
-              <span className="msg-error">{errorsBack.email.msg}</span>
+            {/* {errors && errors.price ? (
+              <span className="msg-error">{errors.price}</span>
             ) : (
               ""
             )} */}
+            {errorsBack && errorsBack.price ? (
+              <span className="msg-error">{errorsBack.price.msg}</span>
+            ) : (
+              ""
+            )}
           </label>
 
           <label>
-            <input
+            <textarea
               required
               type="text"
               name="description"
               className="input"
-              // value={infoRegisterForm.description}
-              // onChange={(e) =>
-              //   setInfoRegisterForm({
-              //     ...infoRegisterForm,
-              //     description: e.target.value,
-              //   })
-              // }
+              value={infoProductForm.description}
+              onChange={(e) =>
+                setInfoProductForm({
+                  ...infoProductForm,
+                  description: e.target.value,
+                })
+              }
             />
             <span>Descripción</span>
 
-            {/* {errorsBack && errorsBack.password ? (
-              <span className="msg-error">{errorsBack.password.msg}</span>
+            {errorsBack && errorsBack.description ? (
+              <span className="msg-error">{errorsBack.description.msg}</span>
             ) : (
               ""
-            )} */}
+            )}
           </label>
 
           <label>
-            <input
-              required
-              type="text"
-              name="image"
-              className="input"
-              // value={infoRegisterForm.image}
-              // onChange={(e) =>
-              //   setInfoRegisterForm({
-              //     ...infoRegisterForm,
-              //     image: e.target.value,
-              //   })
-              // }
-            />
             <span>Imagen</span>
+          </label>
+          <input
+            type="file"
+            name="image"
+            className="input"
+            value={infoProductForm.image}
+            onChange={(e) =>
+              setInfoProductForm({
+                ...infoProductForm,
+                image: e.target.value,
+              })
+            }
+          />
 
-            {/* {errorsBack && errorsBack.password ? (
-              <span className="msg-error">{errorsBack.password.msg}</span>
+          {errorsBack && errorsBack.image ? (
+              <span className="msg-error">{errorsBack.image.msg}</span>
             ) : (
               ""
-            )} */}
-          </label>
+            )}
 
-          <label>
-            <input
-              required
-              type="number"
-              name="quantity"
-              className="input"
-              // value={infoRegisterForm.quantity}
-              // onChange={(e) =>
-              //   setInfoRegisterForm({
-              //     ...infoRegisterForm,
-              //     quantity: e.target.value,
-              //   })
-              // }
-            />
-            <span>Cantidad Stock</span>
+          <div className="flex">
+            <label>
+              <input
+                required
+                type="number"
+                name="quantity"
+                className="input"
+                value={infoProductForm.quantity}
+                onChange={(e) =>
+                  setInfoProductForm({
+                    ...infoProductForm,
+                    quantity: e.target.value,
+                  })
+                }
+              />
+              <span>Cantidad Stock</span>
 
-            {/* {errorsBack && errorsBack.password ? (
-              <span className="msg-error">{errorsBack.password.msg}</span>
+              {errorsBack && errorsBack.quantity ? (
+              <span className="msg-error">{errorsBack.quantity.msg}</span>
             ) : (
               ""
-            )} */}
-          </label>
+            )}
+            </label>
 
-          <label>
-            <input
-              required
-              type="text"
-              name="promotion"
-              className="input"
-              // value={infoRegisterForm.promotion}
-              // onChange={(e) =>
-              //   setInfoRegisterForm({
-              //     ...infoRegisterForm,
-              //     promotion: e.target.value,
-              //   })
-              // }
-            />
-            <span>En Promo?</span>
+            <label>
+              <select
+                required
+                type="text"
+                name="promotion"
+                className="input"
+                value={infoProductForm.promotion}
+                onChange={(e) =>
+                  setInfoProductForm({
+                    ...infoProductForm,
+                    promotion: e.target.value,
+                  })
+                }
+              >
+                <option value="no">NO</option>
+                <option value="si">SI</option>
+              </select>
+              <span>En Promo?</span>
 
-            {/* {errorsBack && errorsBack.password ? (
-              <span className="msg-error">{errorsBack.password.msg}</span>
+              {errorsBack && errorsBack.promotion ? (
+              <span className="msg-error">{errorsBack.promotion.msg}</span>
             ) : (
               ""
-            )} */}
-          </label>
-          
-          <button className="submit" /*onClick={handleRegister}*/>
+            )}
+            </label>
+          </div>
+
+          <button className="submit" onClick={productCreate}>
             Crear Producto
           </button>
         </form>
       </div>
     </main>
-  )
+  );
 }
 
-export default ProductCreate
+export default ProductCreate;

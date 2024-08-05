@@ -1,0 +1,42 @@
+:root {
+  --color1: #ff6700;
+  --color2: #EBEBEB;
+  --color3: #C0C0C0;
+  --color4: #3A6EA5;
+  --color5: #004E98;
+}
+
+.productCreate_container {
+  background-color: var(--color5);
+  min-height: 100vh;
+}
+
+#form_product_create {
+  max-width: 90%;
+}
+
+#form_product_create .flex label {
+  width: 100%;
+}
+#form_product_create .flex {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+@media (min-width: 769px) {
+  #form_product_create {
+    max-width: 50%;
+  }
+  #form_product_create .flex {
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    gap: 6px;
+    justify-content: center;
+  }
+  #form_product_create .flex label {
+    width: 50%;
+  }
+}

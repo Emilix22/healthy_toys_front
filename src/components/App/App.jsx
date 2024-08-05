@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { AppContextProvider } from "../../context/appContext";
 import { RegisterContextProvider } from "../../context/registerContext";
 import { LoginContextProvider } from "../../context/loginContext";
+import { ProductContextProvider } from "../../context/productContext";
 import Home from "../Home/Home";
 import SelectSite from "../SelectSite/SelectSite";
 import Register from "../Register/Register";
@@ -18,7 +19,7 @@ function App() {
         <Route path="/e_commerce/register" element={<RegisterContextProvider><Register /></RegisterContextProvider>} />
         <Route path="/e_commerce/login" element={<LoginContextProvider><Login /></LoginContextProvider>} />
         <Route path="/e_commerce/cart" element={<Cart />} />
-        <Route path="/e_commerce/product_create" element={<ProductCreate />} />
+        <Route path="/e_commerce/product/create" element={<ProductContextProvider><ProductCreate /></ProductContextProvider>} />
       </Routes>
     </AppContextProvider>
   );

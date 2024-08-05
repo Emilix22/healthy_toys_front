@@ -1,0 +1,27 @@
+:root {
+  --color1: #FF6700;
+  --color2: #EBEBEB;
+  --color3: rgb(192, 192, 192);
+  --color4: #3A6EA5;
+  --color5: #004e98;
+  }
+.cart_container {
+  text-align: center;
+  color: var(--color5);
+}
+table {
+  width: 95%;
+  margin: 20px auto;
+  box-shadow: 2px 4px 10px 1px rgba(192, 192, 192, 0.47);
+  color: var(--color5);
+}
+table img {
+  width: 80px;
+  border-radius: 4px;
+}
+td {
+  padding: 7px;
+  font-size: 0.7rem;
+  border: 1px solid var(--color5);
+  text-align: center;
+}

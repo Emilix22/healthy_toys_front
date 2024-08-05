@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { AppContext } from "../../context/appContext";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
@@ -9,6 +10,10 @@ import scrollHeader from "../../services/scrollHeader";
 import menuActive from "../../services/menuActive";
 
 function Header() {
+  const {
+    user,
+    logout,
+  } = useContext(AppContext);
   scrollHeader();
   return (
     <header id="up">
@@ -37,20 +42,26 @@ function Header() {
             Sobre Nosotros
           </Link>
         </ul>
-        <ul>
+
+        {
+          user ?
+          <ul>
+          <Link to="#" onClick={logout}>Salir</Link>
+          <Link to="/e_commerce/product/create" onClick={menuActive}>Crear Producto</Link>
+          </ul>
+          :
+          <ul>
           <Link to="/e_commerce/register" onClick={menuActive}>
             Registrarse
           </Link>
-          <Link to="/e_commerce/login" onClick={menuActive}>
-            Iniciar Sesión
-          </Link>
+          <Link to="/e_commerce/login" onClick={menuActive}>Iniciar Sesión</Link>
           <Link to="/e_commerce/cart" onClick={menuActive}>
             <ShoppingCartIcon />
           </Link>
-          <Link to="#" onClick={menuActive}>
-            <FavoriteBorderIcon />
-          </Link>
         </ul>
+    
+        }
+          
       </nav>
     </header>
   );
