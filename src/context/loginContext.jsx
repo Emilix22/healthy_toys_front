@@ -20,10 +20,11 @@ export const LoginContextProvider = ({ children }) => {
   const [userEmail, setUserEmail] = useState();
   const [password, setPassword] = useState("");
   const [rememberUser, setRememberUser] = useState();
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = (event) => {
     event.preventDefault();
-
+    setLoading(true)
     fetch(`${BASE_URL}/users/login`, {
       method: "POST",
       body: JSON.stringify({
@@ -57,6 +58,7 @@ export const LoginContextProvider = ({ children }) => {
           }
         }
       })
+      .finally(() => setLoading(false))
       .catch((error) => {
         console.log(error);
       });
@@ -74,6 +76,7 @@ export const LoginContextProvider = ({ children }) => {
         setRememberUser,
         rememberUser,
         handleLogin,
+        loading,
       }}
     >
       {children}

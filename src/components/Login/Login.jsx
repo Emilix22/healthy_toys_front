@@ -3,6 +3,7 @@ import { LoginContext } from "../../context/loginContext";
 import "../Register/Register.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import Loader from "../Loader/Loader";
 
 function Login() {
 
@@ -15,6 +16,7 @@ function Login() {
     setPassword,
     setRememberUser,
     handleLogin,
+    loading,
   } = useContext(LoginContext);
 
   useEffect(() => {
@@ -67,7 +69,8 @@ function Login() {
           </div>
 
           {errorsBack ? <span className="msg-error">{errorsBack}</span> : ""}
-
+          {loading ? <span className="loader">{<Loader />} Cargando...</span> : ""}
+          
           <button className="submit" onClick={handleLogin}>
             Iniciar sesión
           </button>

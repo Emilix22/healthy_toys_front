@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { ProductContext } from "../../context/productContext";
+import Loader from "../Loader/Loader"
 import "./ProductsList.css";
 import ProductCard from "../ProductCard/ProductCard";
 import Filters from "../Filters/Filters";
+const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 
 import img_2 from "../../assets/img2.jpg";
 import img_1 from "../../assets/img1.jpg";
 import img_3 from "../../assets/img3.jpg";
 
 function ProductsList() {
+  const {
+    loading,
+    getAllProducts,
+    products,
+  } = useContext(ProductContext);
+  
   const [filters, setFilters] = useState({
     category: "all",
     maxPrice: 30000,
@@ -22,17 +31,39 @@ function ProductsList() {
     });
   };
 
+  useEffect(() => {
+    getAllProducts()
+  },[])
+
   return (
     <section id="products_section">
       <h1 className="title_section">NUESTROS PRODUCTOS</h1>
       <Filters setFilters={setFilters} filters={filters} />
       <section className="productslist">
+        {products ? (
+          products.map((product) => {
+            return (
+              <ProductCard
+                img={`${BASE_URL}/img/products/${product.image}`}
+                productName={product.name}
+                category={product.categories.name}
+                description={product.description}
+                price={product.price}
+                key={product.id_product}
+              />
+            );
+          })
+        ) : loading ? (
+          <span className="loader">{<Loader />} Cargando...</span>
+        ) : (
+          ""
+        )}
         <ProductCard
           img={img_3}
           productName={"Bouncer"}
           category={"Hogar"}
           description={
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quisquam sapiente soluta magnam temporibus facilis. Fugiat pariatur nihil, repellendus numquam iste libero maxime perferendis quisquam tenetur similique adipisci. Autem, magni!"
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quisquam sapiente soluta magnam temporibus facilis. Fugiat pariatur "
           }
           price={"20.000"}
         />

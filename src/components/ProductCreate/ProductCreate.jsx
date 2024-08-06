@@ -13,6 +13,7 @@ function ProductCreate() {
     setInfoProductForm,
     errorsBack,
     productCreate,
+    loading,
   } = useContext(ProductContext);
 
   const [categories, setCategories] = useState([]);
@@ -171,13 +172,7 @@ function ProductCreate() {
             type="file"
             name="image"
             className="input"
-            value={infoProductForm.image}
-            onChange={(e) =>
-              setInfoProductForm({
-                ...infoProductForm,
-                image: e.target.value,
-              })
-            }
+            onChange={(e) => setInfoProductForm({ ...infoProductForm, image: e.target.files[0]})}
           />
 
           {errorsBack && errorsBack.image ? (
@@ -236,7 +231,7 @@ function ProductCreate() {
             )}
             </label>
           </div>
-
+          {loading ? <span className="loader">{<Loader />} Cargando...</span> : ""}
           <button className="submit" onClick={productCreate}>
             Crear Producto
           </button>

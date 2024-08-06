@@ -20,31 +20,37 @@ export const ProductContextProvider = ({ children }) => {
     quantity: "",
     promotion: "",
   });
+
   const [errorsBack, setErrorsBack] = useState(); //errores back
+  const [loading, setLoading] = useState(false);
+  const [products, setProducts] = useState([]);
   const history = useNavigate();
 
   const productCreate = (event) => {
     event.preventDefault();
 
+    const fd = new FormData()
+    fd.append('name', infoProductForm.name)
+    fd.append('category', infoProductForm.category)
+    fd.append('price', infoProductForm.price)
+    fd.append('description', infoProductForm.description)
+    fd.append('image', infoProductForm.image)
+    fd.append('quantity', infoProductForm.quantity)
+    fd.append('promotion', infoProductForm.promotion)
+
+
+    setLoading(true);
+
     fetch(`${BASE_URL}/products/create`, {
       method: "POST",
-      body: JSON.stringify({
-        name: infoProductForm.name,
-        category: infoProductForm.category,
-        price: infoProductForm.price,
-        description: infoProductForm.description,
-        image: infoProductForm.image,
-        quantity: infoProductForm.quantity,
-        promotion: infoProductForm.promotion,
-      }),
+      body: fd,
       headers: {
-        "Content-Type": "application/json",
         Authorization: `Bearer ${user.token}`,
       },
     })
       .then((res) => res.json())
       .then((info) => {
-        console.log(info);
+        //console.log(info);
         {
           if (info.error) {
             setErrorsBack(info.error);
@@ -70,10 +76,21 @@ export const ProductContextProvider = ({ children }) => {
             history("/e_commerce");
           }
         }
-      })
-      .catch((error) => {
-        console.log(error);
       });
+    setLoading(false).catch((error) => {
+      console.log(error);
+    });
+  };
+
+  const getAllProducts = () => {
+    setLoading(true);
+    fetch(`${BASE_URL}/products`)
+      .then((res) => res.json())
+      .then((info) => {
+        console.log(info.data)
+        setProducts(info.data);
+      });
+    setLoading(false)
   };
 
   return (
@@ -84,6 +101,9 @@ export const ProductContextProvider = ({ children }) => {
         errorsBack,
         setErrorsBack,
         productCreate,
+        loading,
+        getAllProducts,
+        products,
       }}
     >
       {children}

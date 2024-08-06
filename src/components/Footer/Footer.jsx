@@ -5,7 +5,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
 import YoutubeIcon from "@mui/icons-material/Youtube";
-import logo from "../../assets/g24.svg";
+import logo from "../../assets/logoRedondo.svg";
 import "./Footer.css";
 
 function Footer() {
@@ -30,7 +30,7 @@ function Footer() {
             <Link id="fscebook" to="https://facebook.com" target="_blank">
               <FacebookIcon />
             </Link>
-            <Link id="youtube" to="https://youtube.com" target="_blank">
+            <Link id="youtube" to="https://www.youtube.com/@HealthyToys" target="_blank">
               <YoutubeIcon />
             </Link>
             <Link

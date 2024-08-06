@@ -10,6 +10,7 @@ export const RegisterContextProvider = ({ children }) => {
   const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 
   const [errorsBack, setErrorsBack] = useState(); //errores back
+  const [loading, setLoading] = useState(false);
   
   const history = useNavigate();
 
@@ -29,6 +30,7 @@ export const RegisterContextProvider = ({ children }) => {
 
   const handleRegister = (event) => {
     event.preventDefault();
+    setLoading(true)
 
     fetch(`${BASE_URL}/users/create`, {
       method: "POST",
@@ -60,6 +62,7 @@ export const RegisterContextProvider = ({ children }) => {
           }
         }
       })
+      setLoading(false)
       .catch((error) => {
         console.log(error);
       });
@@ -73,6 +76,7 @@ export const RegisterContextProvider = ({ children }) => {
         handleRegister,
         errorsBack,
         setErrorsBack,
+        loading,
       }}
     >
       {children}

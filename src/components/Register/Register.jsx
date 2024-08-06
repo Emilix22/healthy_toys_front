@@ -19,6 +19,7 @@ function Register() {
     infoRegisterForm,
     setInfoRegisterForm,
     handleRegister,
+    loading
   } = useContext(RegisterContext);
 
   const expressions = {
@@ -216,6 +217,7 @@ function Register() {
             validTextColor="#2fac28"
             invalidTextColor="grey"
           />
+          {loading ? <span className="loader">{<Loader />} Cargando...</span> : ""}
           <button className="submit" onClick={handleRegister}>
             Enviar
           </button>
