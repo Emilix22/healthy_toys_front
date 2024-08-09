@@ -86,14 +86,20 @@
   -webkit-text-stroke: 1px var(--color5);
 }
 
-@media (min-width: 769px) {
+@media (min-width: 426px) {
   .select h1 {
-    font-size: 4rem;
+    font-size: 3rem;
   }
   .logoHello {
     width: 30%;
   }
   .select a {
     width: 35%;
+  }
+}
+
+@media (min-width: 769px) {
+  .select h1 {
+    font-size: 4rem;
   }
 }

@@ -12,7 +12,7 @@ function SelectSite() {
         <source src="background_video.mp4" type="video/mp4" />
       </video>
       <section className="select">
-        <Link id="linkTutorials" to="#">
+        <Link id="linkTutorials" to="https://www.youtube.com/@HealthyToys">
           <span>TUTORIALES</span> <YoutubeIcon fontSize="inherit" />
         </Link>
         <div className="logoHello">

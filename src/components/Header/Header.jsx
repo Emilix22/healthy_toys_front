@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { AppContext } from "../../context/appContext";
+import { CartContext } from "../../context/cartContext";
 import "./Header.css";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import logo from "../../assets/logoHT.svg";
 import scrollHeader from "../../services/scrollHeader";
 import menuActive from "../../services/menuActive";
@@ -13,8 +13,15 @@ function Header() {
   const {
     user,
     logout,
+    userData,
   } = useContext(AppContext);
+
+  const {
+    cart,
+  } = useContext(CartContext);
+
   scrollHeader();
+
   return (
     <header id="up">
       <img src={logo} alt="logo" />
@@ -47,7 +54,14 @@ function Header() {
           user ?
           <ul>
           <Link to="#" onClick={logout}>Salir</Link>
-          <Link to="/e_commerce/product/create" onClick={menuActive}>Crear Producto</Link>
+          {/* <div className={`avatar_name ${isOpen && "open"}`}>       
+            <div className="item">
+                <span>{user.name+" "+user.surname}</span>
+            </div>
+            <div className="item">
+              <img className="avatar" src={`http://localhost:3000/img/users/${user.avatar}`} alt="userAvatar" />
+            </div>
+          </div> */}
           </ul>
           :
           <ul>
@@ -55,11 +69,13 @@ function Header() {
             Registrarse
           </Link>
           <Link to="/e_commerce/login" onClick={menuActive}>Iniciar Sesión</Link>
-          <Link to="/e_commerce/cart" onClick={menuActive}>
-            <ShoppingCartIcon />
-          </Link>
         </ul>
-    
+        }
+          <Link to="/e_commerce/cart" onClick={menuActive}>
+            <small className="cartNumber">{cart.length}</small><ShoppingCartIcon />
+          </Link>
+        {
+          userData && userData.data.privileges_id === 1 ? <Link to="/e_commerce/product/create" onClick={menuActive}>Crear Producto</Link> : ""
         }
           
       </nav>

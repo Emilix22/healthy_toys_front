@@ -9,19 +9,7 @@
   text-align: center;
   color: var(--color5);
 }
-table {
-  width: 95%;
-  margin: 20px auto;
-  box-shadow: 2px 4px 10px 1px rgba(192, 192, 192, 0.47);
-  color: var(--color5);
-}
-table img {
-  width: 80px;
+.cart_container li img {
+  width: 50%;
   border-radius: 4px;
-}
-td {
-  padding: 7px;
-  font-size: 0.7rem;
-  border: 1px solid var(--color5);
-  text-align: center;
 }

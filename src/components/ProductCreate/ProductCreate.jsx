@@ -45,6 +45,8 @@ function ProductCreate() {
           <p className="title_login">Agregar Producto al E-Commerce</p>
           {errorsBack && errorsBack.userInDB ? (
             <span className="msg-error">{errorsBack.userInDB}</span>
+          ) : errorsBack && errorsBack.noAdmin ? (
+            <span className="msg-error">{errorsBack.noAdmin}</span>
           ) : (
             ""
           )}

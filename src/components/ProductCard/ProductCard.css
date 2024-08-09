@@ -37,11 +37,23 @@
   border-radius: 6px;
   aspect-ratio: 4/3;
 }
-.product_card .add_fav {
+.product_card .add_cart {
   display: flex;
   justify-content: center;
   gap: 30px;
   color: var(--color1);
+  
+}
+.product_card .add_cart svg {
+  cursor: pointer;
+  transition: all 0.5s;
+}
+.product_card .add_cart svg:hover {
+  transform: scale(1.2);
+ 
+}
+.removeCart {
+  color: red;
 }
 
 @media (min-width: 769px) {

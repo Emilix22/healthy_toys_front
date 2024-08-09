@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ProductContext } from "../../context/productContext";
+import { CartContext } from "../../context/cartContext";
 import Loader from "../Loader/Loader"
 import "./ProductsList.css";
 import ProductCard from "../ProductCard/ProductCard";
@@ -16,6 +17,10 @@ function ProductsList() {
     getAllProducts,
     products,
   } = useContext(ProductContext);
+
+  const {
+    cart,
+  } = useContext(CartContext);
   
   const [filters, setFilters] = useState({
     category: "all",
@@ -31,6 +36,10 @@ function ProductsList() {
     });
   };
 
+  const checkProductInCart = product => {
+    return cart.some(item => item.id_product === product.id_product)   
+  }
+
   useEffect(() => {
     getAllProducts()
   },[])
@@ -42,13 +51,16 @@ function ProductsList() {
       <section className="productslist">
         {products ? (
           products.map((product) => {
+            const isProductInCart = checkProductInCart(product)
             return (
               <ProductCard
                 img={`${BASE_URL}/img/products/${product.image}`}
                 productName={product.name}
                 category={product.categories.name}
                 description={product.description}
-                price={product.price}
+                price={new Intl.NumberFormat().format(product.price)}
+                prod={product}
+                prodInCart = {isProductInCart}
                 key={product.id_product}
               />
             );
@@ -58,60 +70,6 @@ function ProductsList() {
         ) : (
           ""
         )}
-        <ProductCard
-          img={img_3}
-          productName={"Bouncer"}
-          category={"Hogar"}
-          description={
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quisquam sapiente soluta magnam temporibus facilis. Fugiat pariatur "
-          }
-          price={"20.000"}
-        />
-        <ProductCard
-          img={img_2}
-          productName={"Rollingball"}
-          category={"Vía Pública"}
-          description={
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quisquam sapiente soluta magnam temporibus facilis. Fugiat pariatur nihil, repellendus numquam iste libero maxime perferendis quisquam tenetur similique adipisci. Autem, magni!"
-          }
-          price={"15.000"}
-        />
-        <ProductCard
-          img={img_1}
-          productName={"Dominator"}
-          category={"Hogar"}
-          description={
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quisquam sapiente soluta magnam temporibus facilis. Fugiat pariatur nihil, repellendus numquam iste libero maxime perferendis quisquam tenetur similique adipisci. Autem, magni!"
-          }
-          price={"10.500"}
-        />
-        <ProductCard
-          img={img_3}
-          productName={"Bouncer"}
-          category={"Profesional"}
-          description={
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quisquam sapiente soluta magnam temporibus facilis. Fugiat pariatur nihil, repellendus numquam iste libero maxime perferendis quisquam tenetur similique adipisci. Autem, magni!"
-          }
-          price={"20.000"}
-        />
-        <ProductCard
-          img={img_2}
-          productName={"Rollingball"}
-          category={"Vía Pública"}
-          description={
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quisquam sapiente soluta magnam temporibus facilis. Fugiat pariatur nihil, repellendus numquam iste libero maxime perferendis quisquam tenetur similique adipisci. Autem, magni!"
-          }
-          price={"15.000"}
-        />
-        <ProductCard
-          img={img_1}
-          productName={"Dominator"}
-          category={"Hogar"}
-          description={
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque quisquam sapiente soluta magnam temporibus facilis. Fugiat pariatur nihil, repellendus numquam iste libero maxime perferendis quisquam tenetur similique adipisci. Autem, magni!"
-          }
-          price={"10.500"}
-        />
       </section>
     </section>
   );

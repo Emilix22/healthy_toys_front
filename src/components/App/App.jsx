@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AppContext } from "../../context/appContext";
 // import { AppContextProvider } from "../../context/appContext";
@@ -13,7 +13,10 @@ import Cart from "../Cart/Cart";
 import ProductCreate from "../ProductCreate/ProductCreate";
 
 function App() {
-  const { user } = useContext(AppContext);
+  const { user, getUserData, userData } = useContext(AppContext);
+  useEffect(() => {
+    user && getUserData()
+  }, [user])
   return (
       <Routes>
         <Route path="/" element={<SelectSite />} />
@@ -21,7 +24,7 @@ function App() {
         <Route path="/e_commerce/register" element={<RegisterContextProvider><Register /></RegisterContextProvider>} />
         <Route path="/e_commerce/login" element={<LoginContextProvider><Login /></LoginContextProvider>} />
         <Route path="/e_commerce/cart" element={<Cart />} />
-        <Route path="/e_commerce/product/create" element={user ? <ProductContextProvider><ProductCreate /></ProductContextProvider> : <LoginContextProvider><Login /></LoginContextProvider>} />
+        <Route path="/e_commerce/product/create" element={userData && userData.data.privileges_id === 1 ? <ProductContextProvider><ProductCreate /></ProductContextProvider> : <ProductContextProvider><Home /></ProductContextProvider>} />
       </Routes>
   );
 }

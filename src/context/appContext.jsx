@@ -27,7 +27,7 @@ export const AppContextProvider = ({ children }) => {
     });
     const info = await response.json();
     setUserData(info);
-    //console.log(info);
+    //console.log(info)
   }
 
   const logout = (event) => {

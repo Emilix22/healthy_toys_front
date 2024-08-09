@@ -9,6 +9,7 @@ export const LoginContextProvider = ({ children }) => {
 
   const {
     setUser,
+    getUserData,
   } = useContext(AppContext);
 
   const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
@@ -58,7 +59,7 @@ export const LoginContextProvider = ({ children }) => {
           }
         }
       })
-      .finally(() => setLoading(false))
+      .finally(() => {setLoading(false)})
       .catch((error) => {
         console.log(error);
       });

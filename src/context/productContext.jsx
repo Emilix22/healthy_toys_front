@@ -87,7 +87,7 @@ export const ProductContextProvider = ({ children }) => {
     fetch(`${BASE_URL}/products`)
       .then((res) => res.json())
       .then((info) => {
-        console.log(info.data)
+        //console.log(info.data)
         setProducts(info.data);
       });
     setLoading(false)
