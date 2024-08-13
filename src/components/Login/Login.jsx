@@ -56,7 +56,7 @@ function Login() {
             />
             <span>Password</span>
           </label>
-          <div className="remember_div">
+          {/* <div className="remember_div">
             <input
               type="checkbox"
               name="rememberUser"
@@ -66,7 +66,7 @@ function Login() {
             <label className="message" htmlFor="rememberUser">
               Recordarme
             </label>
-          </div>
+          </div> */}
 
           {errorsBack ? <span className="msg-error">{errorsBack}</span> : ""}
           {loading ? <span className="loader">{<Loader />} Cargando...</span> : ""}

@@ -26,6 +26,19 @@ export const ProductContextProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const history = useNavigate();
 
+  const [filters, setFilters] = useState({
+    category: "all",
+    //maxPrice: 30000,
+  });
+
+  const filterProducts = (products) => {
+    return products.filter((product) => {
+      return (
+        filters.category == "all" || product.category_id == filters.category
+      );
+    });
+  };
+
   const productCreate = (event) => {
     event.preventDefault();
 
@@ -88,7 +101,7 @@ export const ProductContextProvider = ({ children }) => {
       .then((res) => res.json())
       .then((info) => {
         //console.log(info.data)
-        setProducts(info.data);
+        setProducts(filterProducts(info.data));
       });
     setLoading(false)
   };
@@ -104,6 +117,8 @@ export const ProductContextProvider = ({ children }) => {
         loading,
         getAllProducts,
         products,
+        filters,
+        setFilters,
       }}
     >
       {children}

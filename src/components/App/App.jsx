@@ -5,6 +5,7 @@ import { AppContext } from "../../context/appContext";
 import { RegisterContextProvider } from "../../context/registerContext";
 import { LoginContextProvider } from "../../context/loginContext";
 import { ProductContextProvider } from "../../context/productContext";
+import Cookies from "js-cookie";
 import Home from "../Home/Home";
 import SelectSite from "../SelectSite/SelectSite";
 import Register from "../Register/Register";
@@ -12,11 +13,19 @@ import Login from "../Login/Login";
 import Cart from "../Cart/Cart";
 import ProductCreate from "../ProductCreate/ProductCreate";
 
+
 function App() {
-  const { user, getUserData, userData } = useContext(AppContext);
+  const { user, getUserData, userData, setUser } = useContext(AppContext);
+  // const userLogin = Cookies.get("userLogin")
+
+  // useEffect(() => {
+  //   userLogin && setUser(JSON.parse(userLogin))
+  // }, [])
+
   useEffect(() => {
     user && getUserData()
   }, [user])
+
   return (
       <Routes>
         <Route path="/" element={<SelectSite />} />

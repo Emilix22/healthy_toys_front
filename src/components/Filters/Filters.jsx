@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import "./Filters.css";
+const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
+
 
 function Filters({ setFilters, filters }) {
   const handleChangeMaxPrice = (event) => {
@@ -17,6 +19,20 @@ function Filters({ setFilters, filters }) {
     }));
   };
 
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch(`${BASE_URL}/categories`)
+      .then((res) => res.json())
+      .then((info) => {
+        //console.log(info.data)
+        setCategories(info);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   return (
     <section className="filters">
       <article>
@@ -27,9 +43,10 @@ function Filters({ setFilters, filters }) {
           onChange={handleChangeCategory}
         >
           <option value="all">Todas</option>
-          <option value="1">Vía Pública</option>
-          <option value="2">Hogar</option>
-          <option value="2">Profesional</option>
+                {categories.data &&
+                  categories.data.map((cat) => {
+                    return <option value={cat.id_category} key={cat.id_category}>{cat.name}</option>;
+                  })}
         </select>
       </article>
       <article id="search_section">

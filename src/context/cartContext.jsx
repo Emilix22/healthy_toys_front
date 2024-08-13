@@ -33,6 +33,14 @@ export const CartContextProvider = ({ children }) => {
 const removeFromCart = product => {
   setCart(prevState => prevState.filter(item => item.id_product != product.id_product))
 }
+/**********************************************NUMERO DE PRODUCTOS EN EL CARRITO*********************************** */
+const cartProductCount = cart ? cart.reduce((acum, val ) => 
+  acum + val.quantity, 0,
+) : 0
+/**********************************************TOTAL $ CARRITO*********************************** */
+const cartTotal = cart ? cart.reduce((acum, val ) => 
+  acum + (val.quantity * val.price), 0,
+) : 0
 /**********************************************VACIAR EL CARRITO*********************************** */
   const clearCart = () => {
     setCart([]);
@@ -46,6 +54,8 @@ const removeFromCart = product => {
         addToCart,
         clearCart,
         removeFromCart,
+        cartProductCount,
+        cartTotal,
       }}
     >
       {children}

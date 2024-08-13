@@ -23,6 +23,7 @@ header{
   align-items: flex-start;
   position: relative;
   z-index: 200;
+  height: 50px;
 }
 header img {
   margin-top: 10px;
@@ -89,6 +90,19 @@ header nav.activeMenu {
   transform: rotate(45deg) translate(-3px, -2px);
   background-color: var(--color1);
 }
+.cartIcon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 5px;
+  right: 100px;
+  width: 50px;
+  border: none;
+  padding: 5px;
+  color: var(--color2);
+}
 
 @media (min-width: 769px) {
   .scrollDown {
@@ -97,10 +111,12 @@ header nav.activeMenu {
     padding: 10px 5px;
     max-width: 100%;
   }
-  
+  .cartIcon {
+    right: 400px;
+    top: 0px;
+  }
   header{
     position: sticky;
-    height: 50px;
     top: 0px;
     left: 0;
     margin: auto;

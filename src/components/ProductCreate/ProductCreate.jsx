@@ -19,17 +19,10 @@ function ProductCreate() {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    fetch(`${BASE_URL}/categories`, {
-      method: "POST",
-      body: JSON.stringify({}),
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${user.token}`,
-      },
-    })
+    fetch(`${BASE_URL}/categories`)
       .then((res) => res.json())
       .then((info) => {
-        //console.log(info)
+        //console.log(info.data)
         setCategories(info);
       })
       .catch((error) => {

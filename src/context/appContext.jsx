@@ -1,6 +1,6 @@
 import { useState, createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookie from "js-cookie";
+import Cookies from "js-cookie";
 
 
 
@@ -33,7 +33,8 @@ export const AppContextProvider = ({ children }) => {
   const logout = (event) => {
     event.preventDefault();
     setUser(null);
-    Cookie.remove("userLogin");
+    setUserData(null)
+    // document.cookie.replace("");
     history("/");
   };
 

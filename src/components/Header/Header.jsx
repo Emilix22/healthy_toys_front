@@ -17,7 +17,7 @@ function Header() {
   } = useContext(AppContext);
 
   const {
-    cart,
+    cartProductCount,
   } = useContext(CartContext);
 
   scrollHeader();
@@ -71,14 +71,15 @@ function Header() {
           <Link to="/e_commerce/login" onClick={menuActive}>Iniciar Sesión</Link>
         </ul>
         }
-          <Link to="/e_commerce/cart" onClick={menuActive}>
-            <small className="cartNumber">{cart.length}</small><ShoppingCartIcon />
-          </Link>
+          
         {
           userData && userData.data.privileges_id === 1 ? <Link to="/e_commerce/product/create" onClick={menuActive}>Crear Producto</Link> : ""
         }
           
       </nav>
+      <Link className="cartIcon" to="/e_commerce/cart" onClick={menuActive}>
+            <small className="cartNumber">{cartProductCount}</small><ShoppingCartIcon />
+          </Link>
     </header>
   );
 }

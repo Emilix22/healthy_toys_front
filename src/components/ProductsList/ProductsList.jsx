@@ -7,34 +7,21 @@ import ProductCard from "../ProductCard/ProductCard";
 import Filters from "../Filters/Filters";
 const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 
-import img_2 from "../../assets/img2.jpg";
-import img_1 from "../../assets/img1.jpg";
-import img_3 from "../../assets/img3.jpg";
 
 function ProductsList() {
   const {
     loading,
     getAllProducts,
     products,
+    filters,
+    setFilters,
   } = useContext(ProductContext);
 
   const {
     cart,
   } = useContext(CartContext);
   
-  const [filters, setFilters] = useState({
-    category: "all",
-    maxPrice: 30000,
-  });
-
-  const filterProducts = (products) => {
-    return products.filter((product) => {
-      return (
-        product.price <= Number(filters.maxPrice) &&
-        (filters.category == "all" || product.category_id == filters.category)
-      );
-    });
-  };
+  
 
   const checkProductInCart = product => {
     return cart.some(item => item.id_product === product.id_product)   
@@ -42,7 +29,7 @@ function ProductsList() {
 
   useEffect(() => {
     getAllProducts()
-  },[])
+  },[filters])
 
   return (
     <section id="products_section">

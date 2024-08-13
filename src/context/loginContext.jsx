@@ -1,7 +1,6 @@
 import { useContext, useState, createContext } from "react";
 import { AppContext } from "./appContext";
 import { useNavigate } from "react-router-dom";
-import Cookie from "js-cookie";
 
 export const LoginContext = createContext();
 
@@ -47,14 +46,9 @@ export const LoginContextProvider = ({ children }) => {
             setUserEmail("");
             setPassword("");
 
-            if (rememberUser) {
-              Cookie.set("userLogin", JSON.stringify(info), {
-                expires: 7,
-                secure: true,
-                sameSite: "strict",
-                path: "/e_commerce",
-              });
-            }
+            // if (rememberUser) {
+            //   document.cookie = `userLogin=${JSON.stringify(info)}; expires=7`
+            // }
             history("/e_commerce");
           }
         }
