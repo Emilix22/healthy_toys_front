@@ -36,7 +36,7 @@ function Cart() {
         {
           cart.map((product) => {
             return <CartItem
-            img={`${BASE_URL}/img/products/${product.image}`}
+            img={`${BASE_URL}/img/products/${product.image1}`}
             name={product.name} 
             price={new Intl.NumberFormat().format(product.price)} 
             quantity={product.quantity} 

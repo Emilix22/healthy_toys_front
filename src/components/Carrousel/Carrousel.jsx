@@ -16,16 +16,16 @@ function Carrousel() {
   const [thumbnailItems, setThumbnailItems] = useState();
   const rightButton = document.querySelector(".next");
 
-  useEffect(() => {
-    setThumbnail(document.querySelector(".slider .thumbnail"));
-    setThumbnailItems(document.querySelectorAll(".thumbnail .item"));
+  // useEffect(() => {
+  //   setThumbnail(document.querySelector(".slider .thumbnail"));
+  //   setThumbnailItems(document.querySelectorAll(".thumbnail .item"));
 
-    thumbnail && thumbnail.appendChild(thumbnailItems[0]);
+  //   thumbnail && thumbnail.appendChild(thumbnailItems[0]);
 
-    setInterval(() => {
-      simulateMouseClick(rightButton);
-    }, 10000);
-  }, [thumbnail]);
+  //   setInterval(() => {
+  //     simulateMouseClick(rightButton);
+  //   }, 10000);
+  // }, [thumbnail]);
 
   return (
     <main className="carrousel_container" id="top">
@@ -35,23 +35,20 @@ function Carrousel() {
             <img src={img1} alt="" />
 
             <div className="content">
-              <div className="title">DESTACADO</div>
+              {/* <div className="title">DESTACADO</div> */}
               <div className="type">BOUNCER</div>
               <div className="description">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Deleniti temporibus quis eum consequuntur voluptate quae
-                doloribus distinctio. Possimus, sed recusandae. Lorem ipsum
-                dolor sit amet consectetur adipisicing elit. Sequi, aut.
+              ¡Mejora tu juego con nuestro innovador producto de entrenamiento de fútbol! Diseñado para perfeccionar la técnica y la destreza en ambas piernas, este equipo es ideal para jugadores de todos los niveles. Con ejercicios específicos y materiales de alta calidad, podrás desarrollar un control del balón impecable y una precisión en tus pases y tiros que te hará destacar en el campo. ¡No esperes más para llevar tu habilidad al siguiente nivel! ⚽💪
               </div>
-              <div className="button">
+              {/* <div className="button">
                 <button>
                   <AddShoppingCartIcon />
                 </button>
-              </div>
+              </div> */}
             </div>
           </article>
 
-          <article className="item">
+          {/* <article className="item">
             <img src={img2} alt="" />
 
             <div className="content">
@@ -69,9 +66,9 @@ function Carrousel() {
                 </button>
               </div>
             </div>
-          </article>
+          </article> */}
 
-          <article className="item">
+          {/* <article className="item">
             <img src={img4} alt="" />
 
             <div className="content">
@@ -109,10 +106,10 @@ function Carrousel() {
                 </button>
               </div>
             </div>
-          </article>
+          </article> */}
         </section>
 
-        <section className="thumbnail">
+        {/* <section className="thumbnail">
           <div className="item">
             <img src={img1} alt="" />
           </div>
@@ -125,7 +122,7 @@ function Carrousel() {
           <div className="item">
             <img src={img3} alt="" />
           </div>
-        </section>
+        </section> */}
 
         <div className="nextPrevArrows">
           <button className="prev" data-type="prev" onClick={carrouselMove}>

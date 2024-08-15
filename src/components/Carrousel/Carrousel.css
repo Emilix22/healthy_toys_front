@@ -54,7 +54,20 @@
 }
 .slider .list .item .type{
   color: var(--color1);
+  background-color: rgba(0, 58, 172, 0.5);
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 5px;
 }
+.slider .list .item .description {
+  /*esto porque esta sólo y fijo*/
+background-color: rgba(0, 58, 172, 0.5);
+padding: 10px;
+border-radius: 8px;
+}
+
+
+
 .slider .list .item .button{
   display: grid;
   grid-template-columns: repeat(2, 130px);

@@ -1,18 +1,15 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import "./ProductCard.css";
 import { CartContext } from "../../context/cartContext";
+import { Link } from "react-router-dom";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 
-
 function ProductCard(props) {
-  const {
-    addToCart,
-    removeFromCart,
-  } = useContext(CartContext);
+  const { addToCart, removeFromCart } = useContext(CartContext);
 
   return (
-    <article className="product_card font-regular">
+    <Link to={`/e_commerce/product/detail/${props.id}`} className="product_card font-regular">
       <img src={props.img} alt="img_product" />
       <div className="title_category">
         <h3 className="title">{props.productName}</h3>
@@ -27,7 +24,7 @@ function ProductCard(props) {
           : <span onClick={() => addToCart(props.prod)}><AddShoppingCartIcon /></span>
         }
       </div> */}
-    </article>
+    </Link>
   );
 }
 

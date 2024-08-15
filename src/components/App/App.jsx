@@ -12,7 +12,7 @@ import Register from "../Register/Register";
 import Login from "../Login/Login";
 import Cart from "../Cart/Cart";
 import ProductCreate from "../ProductCreate/ProductCreate";
-
+import ProductDetail from "../ProductDetail/ProductDetail";
 
 function App() {
   const { user, getUserData, userData, setUser } = useContext(AppContext);
@@ -23,18 +23,60 @@ function App() {
   // }, [])
 
   useEffect(() => {
-    user && getUserData()
-  }, [user])
+    user && getUserData();
+  }, [user]);
 
   return (
-      <Routes>
-        <Route path="/" element={<SelectSite />} />
-        <Route path="/e_commerce" element={<ProductContextProvider><Home /></ProductContextProvider>} />
-        <Route path="/e_commerce/register" element={<RegisterContextProvider><Register /></RegisterContextProvider>} />
-        <Route path="/e_commerce/login" element={<LoginContextProvider><Login /></LoginContextProvider>} />
-        <Route path="/e_commerce/cart" element={<Cart />} />
-        <Route path="/e_commerce/product/create" element={userData && userData.data.privileges_id === 1 ? <ProductContextProvider><ProductCreate /></ProductContextProvider> : <ProductContextProvider><Home /></ProductContextProvider>} />
-      </Routes>
+    <Routes>
+      <Route path="/" element={<SelectSite />} />
+      <Route
+        path="/e_commerce"
+        element={
+          <ProductContextProvider>
+            <Home />
+          </ProductContextProvider>
+        }
+      />
+      <Route
+        path="/e_commerce/register"
+        element={
+          <RegisterContextProvider>
+            <Register />
+          </RegisterContextProvider>
+        }
+      />
+      <Route
+        path="/e_commerce/login"
+        element={
+          <LoginContextProvider>
+            <Login />
+          </LoginContextProvider>
+        }
+      />
+      <Route path="/e_commerce/cart" element={<Cart />} />
+      <Route
+        path="/e_commerce/product/create"
+        element={
+          userData && userData.data.privileges_id === 1 ? (
+            <ProductContextProvider>
+              <ProductCreate />
+            </ProductContextProvider>
+          ) : (
+            <ProductContextProvider>
+              <Home />
+            </ProductContextProvider>
+          )
+        }
+      />
+      <Route
+        path="/e_commerce/product/detail/:id"
+        element={
+          <ProductContextProvider>
+            <ProductDetail />
+          </ProductContextProvider>
+        }
+      />
+    </Routes>
   );
 }
 

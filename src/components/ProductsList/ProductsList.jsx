@@ -41,13 +41,14 @@ function ProductsList() {
             const isProductInCart = checkProductInCart(product)
             return (
               <ProductCard
-                img={`${BASE_URL}/img/products/${product.image}`}
+                img={`${BASE_URL}/img/products/${product.image1}`}
                 productName={product.name}
                 category={product.categories.name}
                 description={product.description}
                 price={new Intl.NumberFormat().format(product.price)}
                 prod={product}
                 prodInCart = {isProductInCart}
+                id={product.id_product}
                 key={product.id_product}
               />
             );

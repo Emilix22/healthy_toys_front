@@ -161,13 +161,13 @@ function ProductCreate() {
           </label>
 
           <label>
-            <span>Imagen</span>
+            <span>Imagen 1</span>
           </label>
           <input
             type="file"
-            name="image"
+            name="image1"
             className="input"
-            onChange={(e) => setInfoProductForm({ ...infoProductForm, image: e.target.files[0]})}
+            onChange={(e) => setInfoProductForm({ ...infoProductForm, image1: e.target.files[0]})}
           />
 
           {errorsBack && errorsBack.image ? (
@@ -177,29 +177,6 @@ function ProductCreate() {
             )}
 
           <div className="flex">
-            <label>
-              <input
-                required
-                type="number"
-                name="quantity"
-                className="input"
-                value={infoProductForm.quantity}
-                onChange={(e) =>
-                  setInfoProductForm({
-                    ...infoProductForm,
-                    quantity: e.target.value,
-                  })
-                }
-              />
-              <span>Cantidad Stock</span>
-
-              {errorsBack && errorsBack.quantity ? (
-              <span className="msg-error">{errorsBack.quantity.msg}</span>
-            ) : (
-              ""
-            )}
-            </label>
-
             <label>
               <select
                 required

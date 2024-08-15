@@ -19,6 +19,7 @@
   position: relative;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+  text-decoration: none;
 }
 .product_card:hover {
   box-shadow: 2px 4px 10px 1px rgba(205, 103, 0, 0.47);
