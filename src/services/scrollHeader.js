@@ -1,7 +1,7 @@
 const scrollHeader = () => {
   window.addEventListener("scroll", () => {
     let header = document.querySelector("header");
-    header.classList.toggle("scrollDown", window.scrollY > 0);
+    header && header.classList.toggle("scrollDown", window.scrollY > 0);
   });
 };
 

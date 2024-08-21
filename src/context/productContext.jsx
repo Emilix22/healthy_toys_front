@@ -17,6 +17,9 @@ export const ProductContextProvider = ({ children }) => {
     price: "",
     description: "",
     image1: "",
+    image2: "",
+    image3: "",
+    image4: "",
     promotion: "",
   });
 
@@ -48,6 +51,9 @@ export const ProductContextProvider = ({ children }) => {
     fd.append('description', infoProductForm.description)
     fd.append('quantity', infoProductForm.quantity)
     fd.append('image1', infoProductForm.image1)
+    fd.append('image2', infoProductForm.image2)
+    fd.append('image3', infoProductForm.image3)
+    fd.append('image4', infoProductForm.image4)
     fd.append('promotion', infoProductForm.promotion)
 
 
@@ -82,6 +88,9 @@ export const ProductContextProvider = ({ children }) => {
               description: "",
               quantity: "",
               image1: "",
+              image2: "",
+              image3: "",
+              image4: "",
               promotion: "",
             });
             clearInputs();

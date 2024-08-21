@@ -36,8 +36,8 @@ function ProductCreate() {
       <div className="formRegister_container">
         <form className="form" id="form_product_create">
           <p className="title_login">Agregar Producto al E-Commerce</p>
-          {errorsBack && errorsBack.userInDB ? (
-            <span className="msg-error">{errorsBack.userInDB}</span>
+          {errorsBack && errorsBack.productInDB ? (
+            <span className="msg-error">{errorsBack.productInDB}</span>
           ) : errorsBack && errorsBack.noAdmin ? (
             <span className="msg-error">{errorsBack.noAdmin}</span>
           ) : (
@@ -168,6 +168,33 @@ function ProductCreate() {
             name="image1"
             className="input"
             onChange={(e) => setInfoProductForm({ ...infoProductForm, image1: e.target.files[0]})}
+          />
+          <label>
+            <span>Imagen 2</span>
+          </label>
+          <input
+            type="file"
+            name="image2"
+            className="input"
+            onChange={(e) => setInfoProductForm({ ...infoProductForm, image2: e.target.files[0]})}
+          />
+          <label>
+            <span>Imagen 3</span>
+          </label>
+          <input
+            type="file"
+            name="image3"
+            className="input"
+            onChange={(e) => setInfoProductForm({ ...infoProductForm, image3: e.target.files[0]})}
+          />
+          <label>
+            <span>Imagen 4</span>
+          </label>
+          <input
+            type="file"
+            name="image4"
+            className="input"
+            onChange={(e) => setInfoProductForm({ ...infoProductForm, image4: e.target.files[0]})}
           />
 
           {errorsBack && errorsBack.image ? (
