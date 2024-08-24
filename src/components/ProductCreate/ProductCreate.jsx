@@ -218,8 +218,8 @@ function ProductCreate() {
                   })
                 }
               >
-                <option value="no">NO</option>
-                <option value="si">SI</option>
+                <option value="false">NO</option>
+                <option value="true">SI</option>
               </select>
               <span>En Promo?</span>
 

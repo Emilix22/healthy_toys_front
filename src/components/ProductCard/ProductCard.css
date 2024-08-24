@@ -53,26 +53,16 @@
   transition: all 0.5s ease-in-out;
 }
 .product_card img {
+  width: 100%;
+  max-width: max-content;
   border-radius: 6px;
-  aspect-ratio: 4/3;
 }
-/* .product_card .add_cart {
-  color: var(--color1);
+.product_card .add_cart {
+  color: green;
   position: absolute;
   bottom: 10px;
   right: 10px;
 }
-.product_card .add_cart svg {
-  cursor: pointer;
-  transition: all 0.5s;
-}
-.product_card .add_cart svg:hover {
-  transform: scale(1.2);
- 
-}
-.removeCart {
-  color: red;
-} */
 
 @media (min-width: 769px) {
   .product_card {

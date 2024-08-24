@@ -43,22 +43,30 @@ function ProductDetail() {
 
       <section className="productDetail">
         <aside className="imagesDetail">
-          <img
+          <figure>
+            <img
             src={`${BASE_URL}/img/products/${product.image1}`}
             alt="image-product"
           />
-          <img
+          </figure>
+          <figure>
+            <img
             src={`${BASE_URL}/img/products/${product.image2}`}
             alt="image-product"
           />
-          <img
+          </figure>
+          <figure>
+            <img
             src={`${BASE_URL}/img/products/${product.image3}`}
             alt="image-product"
           />
-          <img
+          </figure>
+          <figure>
+            <img
             src={`${BASE_URL}/img/products/${product.image4}`}
             alt="image-product"
           />
+          </figure>
         </aside>
         <aside className="productText">
           <p>Descripción: {product.description}</p>

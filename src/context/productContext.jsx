@@ -20,7 +20,7 @@ export const ProductContextProvider = ({ children }) => {
     image2: "",
     image3: "",
     image4: "",
-    promotion: "",
+    promotion: false,
   });
 
   const [errorsBack, setErrorsBack] = useState(); //errores back
@@ -49,7 +49,6 @@ export const ProductContextProvider = ({ children }) => {
     fd.append('category', infoProductForm.category)
     fd.append('price', infoProductForm.price)
     fd.append('description', infoProductForm.description)
-    fd.append('quantity', infoProductForm.quantity)
     fd.append('image1', infoProductForm.image1)
     fd.append('image2', infoProductForm.image2)
     fd.append('image3', infoProductForm.image3)
@@ -77,7 +76,7 @@ export const ProductContextProvider = ({ children }) => {
               position: "center",
               width: 400,
               icon: "success",
-              title: `Producto ${infoProductForm.name} creado correctamente, con un Stock de ${infoProductForm.quantity}`,
+              title: `Producto ${infoProductForm.name} creado correctamente`,
               showConfirmButton: false,
               timer: 2500,
             });
@@ -86,7 +85,6 @@ export const ProductContextProvider = ({ children }) => {
               category: "",
               price: "",
               description: "",
-              quantity: "",
               image1: "",
               image2: "",
               image3: "",

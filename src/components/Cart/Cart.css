@@ -9,8 +9,10 @@
   text-align: center;
   color: var(--color5);
 }
-.cart_container h2 {
-  margin: 10px;
+.cart_container h2, .cart_container h3 {
+  margin: 10px auto;
+  width: 350px;
+  text-align: justify;
 }
 .cart_container .buttons {
   display: flex;

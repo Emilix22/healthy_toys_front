@@ -27,8 +27,10 @@ function CartItem(props) {
 }
 
 function Cart() {
-  const { cart, removeFromCart, clearCart, addToCart, cartTotal } = useContext(CartContext);
-  const [shipping, setShipping] = useState(120);
+  const { cart, removeFromCart, clearCart, addToCart, cartTotal, calculateShipping, orderCreate } = useContext(CartContext);
+  const [shipping, setShipping] = useState(null);
+  const [shippingOption, setShippingOption] = useState("");
+  const [shippingCost, setShippingCost] = useState(120);
   const [preferenceId, setPreferenceId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [orderData, setOrderData] = useState({ title: "Healthy Toys", price: cartTotal, quantity: 1 });
@@ -40,6 +42,16 @@ function Cart() {
       width: 400,
       icon: "warning",
       title: `No hay productos en el carrito para pagar`,
+      showConfirmButton: true,
+    });
+  }
+
+  const alertNoShipping = () => {
+    return Swal.fire({
+      position: "center",
+      width: 400,
+      icon: "warning",
+      title: `Debe seleccionar una opción de envio`,
       showConfirmButton: true,
     });
   }
@@ -67,37 +79,56 @@ function Cart() {
         setIsLoading(false);
       });
   };
+
+  useEffect(() => {
+    shippingOption === "envio" ? setShipping(shippingCost) : setShipping(null)
+  }, [shippingOption])
+  
   return (
     <main className="cart_container">
+      <button onClick={() => orderCreate()}>calcula</button>
       <h1>Carrito de Compras</h1>
       <div className="buttons">
         <button onClick={clearCart}>Vaciar Carrito</button>
         <HashLink to="/e_commerce/#products_section">Seguir comprando</HashLink>
-        <Link to="" onClick={() => {
-          cartTotal > 0 ? createPreference() : alertNoProducts()
-          }}>
+        <Link
+          to=""
+          onClick={() => {
+            if (cartTotal <= 0) {
+              return alertNoProducts();
+            } else if (!shippingOption) {
+              return alertNoShipping();
+            }
+            return createPreference();
+          }}
+        >
           Ir a pagar
         </Link>
       </div>
       <div className="selectShipping">
-            <label htmlFor="colorSelect">Opciones de Envio  </label>
-            <select name="colorSelect" id="colorSelect">
-              <option value="">Seleccione...</option>
-              <option value="personalizado">Retiro en Healthy Toys</option>
-              <option value="celeste_blanco">Correo Argentino</option>
-            </select>
-          </div>
+        <label htmlFor="colorSelect">Opciones de Envio </label>
+        <select
+          name="colorSelect"
+          id="colorSelect"
+          value={shippingOption}
+          onChange={(e) => setShippingOption(e.target.value)}
+        >
+          <option value="">Seleccione...</option>
+          <option value="retira">Retiro en Healthy Toys</option>
+          <option value="envio">Envio por Correo Argentino</option>
+        </select>
+      </div>
       <h3>Productos: ${new Intl.NumberFormat().format(cartTotal)}</h3>
-      <h3>Envio: ${new Intl.NumberFormat().format(shipping)}</h3>
+      <h3>Envio: ${shipping ? new Intl.NumberFormat().format(shipping) : 0}</h3>
       <h2>TOTAL: ${new Intl.NumberFormat().format(cartTotal + shipping)}</h2>
-      {
-        isLoading && <h4 id="loaderMP" className="loader">{<Loader />} Cargando Botón de Pago...</h4>
-      }
+      {isLoading && (
+        <h4 id="loaderMP" className="loader">
+          {<Loader />} Cargando Botón de Pago...
+        </h4>
+      )}
       {preferenceId && (
         <div className="buttonMP">
-          <Wallet
-          initialization={{ preferenceId }}
-        />
+          <Wallet initialization={{ preferenceId }} />
         </div>
       )}
       <ul>

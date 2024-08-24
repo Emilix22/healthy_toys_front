@@ -2,8 +2,7 @@ import React, { useState, useContext } from "react";
 import "./ProductCard.css";
 import { CartContext } from "../../context/cartContext";
 import { Link } from "react-router-dom";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 
 function ProductCard(props) {
@@ -11,20 +10,22 @@ function ProductCard(props) {
 
   return (
     <Link to={`/e_commerce/product/detail/${props.id}`} className="product_card font-regular">
+      <figure>
       <img src={props.img} alt="img_product" />
+      </figure>
       <div className="title_category">
         <h3 className="title">{props.productName}</h3>
         <span className="category">{props.category}</span>
       </div>
       <p>{props.description}</p>
       <h3 className="price">${props.price}</h3>
-      {/* <div className="add_cart">
+      <div className="add_cart">
         {
           props.prodInCart 
-          ? <span className="removeCart" onClick={() => removeFromCart(props.prod)}><RemoveShoppingCartIcon /></span>
+          ? <span><ShoppingCartIcon /></span>
           : null
         }
-      </div> */}
+      </div>
     </Link>
   );
 }
