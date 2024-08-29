@@ -15,7 +15,7 @@
     transform: translateY(0px);
   }
 }
-header{
+#headerPage{
   max-width: 98%;
   margin: auto;
   display: flex;
@@ -25,7 +25,7 @@ header{
   z-index: 200;
   height: 50px;
 }
-header img {
+#headerPage img {
   margin-top: 10px;
   width: 50%;
   border-radius: 8px;
@@ -47,7 +47,7 @@ header img {
   border-radius: 2px;
   transition: all 0.5s;
 }
-header nav {
+#headerPage nav {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -59,13 +59,13 @@ header nav {
   background-color: var(--color2);
   border-radius: 8px;
 }
-header nav ul {
+#headerPage nav ul {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   width: 100%;
 }
-header a{
+#headerPage a{
   text-decoration: none;
   width: 100%;
   text-align: center;
@@ -74,7 +74,7 @@ header a{
   border-bottom: solid 1px var(--color1);
   border-radius: 8px;
 }
-header nav.activeMenu {
+#headerPage nav.activeMenu {
   display: flex;
   margin-top: 10px;
 }
@@ -115,7 +115,7 @@ header nav.activeMenu {
   .cartIcon {
     right: 400px;
   }
-  header{
+  #headerPage{
     position: sticky;
     top: 0px;
     left: 0;
@@ -127,13 +127,13 @@ header nav.activeMenu {
     gap: 50px;
     padding: 0px;
   }
-  header img {
+  #headerPage img {
     width: 40%;
   }
   .hambMenu {
     display: none;
   }
-  header nav {
+  #headerPage nav {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -142,13 +142,13 @@ header nav.activeMenu {
     background-color: transparent;
     height: auto;
   }
-  header nav ul {
+  #headerPage nav ul {
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: auto;
   }
-  header a{
+  #headerPage a{
     color: var(--color2);
     margin-right: 5px;
     padding: 5px 10px;
@@ -158,7 +158,7 @@ header nav.activeMenu {
     
   }
   
-  header a:hover{
+  #headerPage a:hover{
     border-radius: 3px;
     border: solid 2px var(--color2);
     box-shadow: 0px 0px 20px var(--color2);

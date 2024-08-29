@@ -13,6 +13,7 @@ import Login from "../Login/Login";
 import Cart from "../Cart/Cart";
 import ProductCreate from "../ProductCreate/ProductCreate";
 import ProductDetail from "../ProductDetail/ProductDetail";
+import Order from "../Order/Order";
 
 function App() {
   const { user, getUserData, userData, setUser } = useContext(AppContext);
@@ -54,6 +55,7 @@ function App() {
         }
       />
       <Route path="/e_commerce/cart" element={<Cart />} />
+      <Route path="/e_commerce/order" element={<Order />} />
       <Route
         path="/e_commerce/product/create"
         element={

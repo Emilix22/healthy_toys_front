@@ -23,7 +23,7 @@ function Header() {
   scrollHeader();
 
   return (
-    <header id="up">
+    <header id="headerPage">
       <img src={logo} alt="logo" />
       <button className="hambMenu" onClick={menuActive}>
         <span className="br1"></span>

@@ -23,10 +23,19 @@
   box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
   padding: 10px;
 }
-.cart_container .buttons button {
+.cart_container .buttons #btn_clearCart {
   border: solid 1px red;
   padding: 5px 10px;
   color: red;
+  background-color: var(--color2);
+  border-radius: 5px;
+  box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);
+  cursor: pointer;
+}
+.cart_container .buttons #btn_goPay {
+  border: solid 1px var(--color5);
+  padding: 5px 10px;
+  color: var(--color5);
   background-color: var(--color2);
   border-radius: 5px;
   box-shadow: 2px 4px 10px 1px rgba(201, 201, 201, 0.47);

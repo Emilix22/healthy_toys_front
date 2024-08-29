@@ -8,10 +8,14 @@ export const CartContextProvider = ({ children }) => {
 
   const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 
-  const { user } = useContext(AppContext);
+  const { user, history } = useContext(AppContext);
 
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [errorsBack, setErrorsBack] = useState();
+  const [order, setOrder] = useState();
+  const [orderDetailData, setOrderDetailData] = useState();
+  const [shipping, setShipping] = useState(0);
 
 /**********************************************AGREGAR AL CARRITO*********************************** */
   const addToCart = product => {
@@ -59,7 +63,7 @@ const cartTotal = cart ? cart.reduce((acum, val ) =>
     return
   }
 
-/**********************************************CALCULAR ENVIO*********************************** */
+/**********************************************CREAR ORDEN*********************************** */
   const orderCreate = () => {
     setLoading(true);
     fetch(`${BASE_URL}/orders/create`, {
@@ -67,7 +71,7 @@ const cartTotal = cart ? cart.reduce((acum, val ) =>
       body: JSON.stringify({
         orderItems: cart,
         total: cartTotal,
-        shipping_method: "correo",
+        shipping_method: shipping,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -76,39 +80,49 @@ const cartTotal = cart ? cart.reduce((acum, val ) =>
     })
       .then((res) => res.json())
       .then((info) => {
-        return console.log(info);
         {
           if (info.error) {
             setErrorsBack(info.error);
           } else {
-            Swal.fire({
-              position: "center",
-              width: 400,
-              icon: "success",
-              title: `Producto ${infoProductForm.name} creado correctamente`,
-              showConfirmButton: false,
-              timer: 2500,
-            });
-            setInfoProductForm({
-              name: "",
-              category: "",
-              price: "",
-              description: "",
-              image1: "",
-              image2: "",
-              image3: "",
-              image4: "",
-              promotion: "",
-            });
-            clearInputs();
-            history("/e_commerce");
+            setOrder(info)
+            //clearCart();
+            history("/e_commerce/order");
           }
         }
       });
     setLoading(false).catch((error) => {
       console.log(error);
     });
-}  
+}
+
+/**********************************************DETALLE DE LA ORDEN*********************************** */
+const orderDetail = () => {
+  setLoading(true);
+  fetch(`${BASE_URL}/orders/detail`, {
+    method: "POST",
+    body: JSON.stringify({
+      id_order: order.data.order.id_order,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${user.token}`,
+    },
+  })
+    .then((res) => res.json())
+    .then((info) => {
+      // return console.log(info);
+      {
+        if (info.error) {
+          setErrorsBack(info.error);
+        } else {
+          setOrderDetailData(info)
+        }
+      }
+    });
+  setLoading(false).catch((error) => {
+    console.log(error);
+  });
+}
 
   return (
     <CartContext.Provider
@@ -122,6 +136,12 @@ const cartTotal = cart ? cart.reduce((acum, val ) =>
         cartTotal,
         calculateShipping,
         orderCreate,
+        errorsBack,
+        order,
+        orderDetail,
+        orderDetailData,
+        shipping,
+        setShipping,
       }}
     >
       {children}

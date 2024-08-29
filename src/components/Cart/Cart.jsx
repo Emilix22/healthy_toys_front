@@ -1,14 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { CartContext } from "../../context/cartContext";
-import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
-import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import Swal from "sweetalert2";
 import "./Cart.css";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
-import Loader from "../Loader/Loader"
 const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
-const MPID = import.meta.env.VITE_REACT_MPID;
 
 function CartItem(props) {
   
@@ -27,14 +23,8 @@ function CartItem(props) {
 }
 
 function Cart() {
-  const { cart, removeFromCart, clearCart, addToCart, cartTotal, calculateShipping, orderCreate } = useContext(CartContext);
-  const [shipping, setShipping] = useState(null);
+  const { cart, removeFromCart, clearCart, addToCart, cartTotal, shipping, setShipping, calculateShipping, orderCreate, errorsBack } = useContext(CartContext);
   const [shippingOption, setShippingOption] = useState("");
-  const [shippingCost, setShippingCost] = useState(120);
-  const [preferenceId, setPreferenceId] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [orderData, setOrderData] = useState({ title: "Healthy Toys", price: cartTotal, quantity: 1 });
-  initMercadoPago(`${MPID}`, { locale: 'es-AR' });
 
   const alertNoProducts = () => {
     return Swal.fire({
@@ -56,81 +46,50 @@ function Cart() {
     });
   }
 
-  const createPreference = () => {
-    //return console.log(JSON.stringify(orderData))
-    setIsLoading(true);
-    fetch(`${BASE_URL}/mercadoPago/create_preference`, {
-      method: "POST",
-      body: JSON.stringify(orderData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((preference) => {
-        setPreferenceId(preference.id);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
   useEffect(() => {
-    shippingOption === "envio" ? setShipping(shippingCost) : setShipping(null)
+    shippingOption === "postOffice" 
+    ? setShipping(500) 
+    : shippingOption === "address" 
+    ? setShipping(1000) 
+    : setShipping(0)
   }, [shippingOption])
   
   return (
     <main className="cart_container">
-      <button onClick={() => orderCreate()}>calcula</button>
       <h1>Carrito de Compras</h1>
       <div className="buttons">
-        <button onClick={clearCart}>Vaciar Carrito</button>
+        <button id="btn_clearCart" onClick={clearCart}>Vaciar Carrito</button>
         <HashLink to="/e_commerce/#products_section">Seguir comprando</HashLink>
-        <Link
-          to=""
+        <button 
+          id="btn_goPay"
           onClick={() => {
             if (cartTotal <= 0) {
               return alertNoProducts();
             } else if (!shippingOption) {
               return alertNoShipping();
             }
-            return createPreference();
+            return orderCreate();
           }}
         >
           Ir a pagar
-        </Link>
+        </button>
       </div>
       <div className="selectShipping">
-        <label htmlFor="colorSelect">Opciones de Envio </label>
+        <label htmlFor="shippingSelect">Opciones de Envio </label>
         <select
-          name="colorSelect"
-          id="colorSelect"
+          name="shippingSelect"
+          id="shippingSelect"
           value={shippingOption}
           onChange={(e) => setShippingOption(e.target.value)}
         >
           <option value="">Seleccione...</option>
-          <option value="retira">Retiro en Healthy Toys</option>
-          <option value="envio">Envio por Correo Argentino</option>
+          <option value="postOffice">Envio a sucursal de Correo Argentino</option>
+          <option value="address">Envio a domicilio</option>
         </select>
       </div>
       <h3>Productos: ${new Intl.NumberFormat().format(cartTotal)}</h3>
       <h3>Envio: ${shipping ? new Intl.NumberFormat().format(shipping) : 0}</h3>
       <h2>TOTAL: ${new Intl.NumberFormat().format(cartTotal + shipping)}</h2>
-      {isLoading && (
-        <h4 id="loaderMP" className="loader">
-          {<Loader />} Cargando Botón de Pago...
-        </h4>
-      )}
-      {preferenceId && (
-        <div className="buttonMP">
-          <Wallet initialization={{ preferenceId }} />
-        </div>
-      )}
       <ul>
         {cart.map((product) => {
           // setOrderData(product)
