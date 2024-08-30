@@ -74,6 +74,12 @@
   border-bottom: solid 1px var(--color1);
   border-radius: 8px;
 }
+#userWelcome {
+  color: var(--color1);
+  background-color: rgba(0, 58, 172, 0.5);
+  padding: 5px;
+  border-radius: 6px;
+}
 #headerPage nav.activeMenu {
   display: flex;
   margin-top: 10px;
@@ -90,7 +96,7 @@
   transform: rotate(45deg) translate(-3px, -2px);
   background-color: var(--color1);
 }
-.cartIcon {
+#headerPage .cartIcon {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -112,7 +118,7 @@
     padding: 10px 5px;
     max-width: 100%;
   }
-  .cartIcon {
+  #headerPage .cartIcon {
     right: 400px;
   }
   #headerPage{

@@ -9,7 +9,7 @@ const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 const MPID = import.meta.env.VITE_REACT_MPID;
 
 function Order() {
-  const { errorsBack, order, orderDetail, orderDetailData, cartTotal } =
+  const { errorsBack, order, orderDetail, orderDetailData, setOrderDetailData, cartTotal } =
     useContext(CartContext);
   const { userData } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(false);
@@ -82,19 +82,36 @@ function Order() {
           </ul>
         )}
         <section className="buttonsOrder">
-        <button
+          {
+            orderDetailData ? (
+              <button
+          onClick={() => {
+            setOrderDetailData("");
+          }}
+        >
+          Ocultar detalle
+        </button>
+            ) : (
+              <button
           onClick={() => {
             orderDetail();
           }}
         >
           Ver detalle
         </button>
-        <button 
+            )
+          }
+        
+        {
+          !preferenceId && (
+            <button 
           id="btn_goPay"
           onClick={() => {createPreference()}}
         >
           PAGAR
         </button>
+          )
+        }
         </section>
 
       </section>

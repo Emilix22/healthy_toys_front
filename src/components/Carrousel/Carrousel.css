@@ -64,6 +64,7 @@
 background-color: rgba(0, 58, 172, 0.5);
 padding: 10px;
 border-radius: 8px;
+font-size: 1.3rem;
 }
 
 
@@ -327,5 +328,13 @@ border-radius: 8px;
   }
   .slider .list .item .content .title{
       font-size: 50px;
+  }
+
+  .slider .list .item .description {
+  font-size: 0.9rem;
+  }
+
+  .slider .list .item .content{
+    top: 10%;
   }
 }

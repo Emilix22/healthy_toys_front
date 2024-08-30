@@ -75,12 +75,12 @@ function ProductDetail() {
             <select name="colorSelect" id="colorSelect">
               <option value="">Seleccione...</option>
               <option value="personalizado">Personalizado</option>
-              <option value="celeste_blanco">Celeste y Blanco</option>
-              <option value="naranja_blanco">Naranja y Blanco</option>
-              <option value="rojo_blanco">Rojo y Blanco</option>
-              <option value="azul_amarillo">Azul y Amarillo</option>
-              <option value="azul_rojo">Azul y Rojo</option>
-              <option value="verde_blanco">Verde y Blanco</option>
+              <option value="azul">Azul</option>
+              <option value="blanco">Blanco</option>
+              <option value="celeste">Celeste</option>
+              <option value="negro">Negro</option>
+              <option value="rojo">Rojo</option>
+              <option value="verde">Verde</option>
             </select>
           </div>
           

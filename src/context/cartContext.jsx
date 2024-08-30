@@ -142,6 +142,7 @@ const orderDetail = () => {
         orderDetailData,
         shipping,
         setShipping,
+        setOrderDetailData,
       }}
     >
       {children}

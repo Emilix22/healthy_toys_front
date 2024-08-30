@@ -71,6 +71,9 @@ function Header() {
           <Link to="/e_commerce/login" onClick={menuActive}>Iniciar Sesión</Link>
         </ul>
         }
+        {/* {
+          userData && <span id="userWelcome">Bienvenid@ {userData.data.name}</span>
+        } */}
           
         {
           userData && userData.data.privileges_id === 1 ? <Link to="/e_commerce/product/create" onClick={menuActive}>Crear Producto</Link> : ""

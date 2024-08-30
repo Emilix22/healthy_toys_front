@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { AppContext } from "../../context/appContext";
 import { CartContext } from "../../context/cartContext";
 import { HashLink } from "react-router-hash-link";
 import Swal from "sweetalert2";
@@ -23,6 +24,9 @@ function CartItem(props) {
 }
 
 function Cart() {
+  const {
+    user,
+  } = useContext(AppContext);
   const { cart, removeFromCart, clearCart, addToCart, cartTotal, shipping, setShipping, calculateShipping, orderCreate, errorsBack } = useContext(CartContext);
   const [shippingOption, setShippingOption] = useState("");
 
@@ -42,6 +46,16 @@ function Cart() {
       width: 400,
       icon: "warning",
       title: `Debe seleccionar una opción de envio`,
+      showConfirmButton: true,
+    });
+  }
+
+  const alertNoLogin = () => {
+    return Swal.fire({
+      position: "center",
+      width: 400,
+      icon: "warning",
+      title: `Debe iniciar sesión para poder pagar`,
       showConfirmButton: true,
     });
   }
@@ -67,6 +81,8 @@ function Cart() {
               return alertNoProducts();
             } else if (!shippingOption) {
               return alertNoShipping();
+            } else if (!user) {
+              return alertNoLogin();
             }
             return orderCreate();
           }}
