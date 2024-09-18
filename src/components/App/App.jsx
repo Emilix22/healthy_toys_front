@@ -1,11 +1,9 @@
 import React, { useContext, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AppContext } from "../../context/appContext";
-// import { AppContextProvider } from "../../context/appContext";
 import { RegisterContextProvider } from "../../context/registerContext";
 import { LoginContextProvider } from "../../context/loginContext";
 import { ProductContextProvider } from "../../context/productContext";
-import Cookies from "js-cookie";
 import Home from "../Home/Home";
 import SelectSite from "../SelectSite/SelectSite";
 import Register from "../Register/Register";
@@ -16,12 +14,7 @@ import ProductDetail from "../ProductDetail/ProductDetail";
 import Order from "../Order/Order";
 
 function App() {
-  const { user, getUserData, userData, setUser } = useContext(AppContext);
-  // const userLogin = Cookies.get("userLogin")
-
-  // useEffect(() => {
-  //   userLogin && setUser(JSON.parse(userLogin))
-  // }, [])
+  const { user, getUserData, userData } = useContext(AppContext);
 
   useEffect(() => {
     user && getUserData();

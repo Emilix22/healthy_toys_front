@@ -9,31 +9,35 @@ export const CartContextProvider = ({ children }) => {
   const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 
   const { user, history } = useContext(AppContext);
-
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
   const [errorsBack, setErrorsBack] = useState();
   const [order, setOrder] = useState();
   const [orderDetailData, setOrderDetailData] = useState();
   const [shipping, setShipping] = useState(0);
+  const [color, setColor] = useState("no_select")
+
 
 /**********************************************AGREGAR AL CARRITO*********************************** */
   const addToCart = product => {
+
     /*si el producto ya esta en el carrito suma 1 a quantity*/
     const productInCartIndex = cart.findIndex(item => item.id_product === product.id_product)
 
     if (productInCartIndex >= 0) {
       const newCart = structuredClone(cart)
       newCart[productInCartIndex].quantity += 1
-      
+
       return setCart(newCart)
     }
+
     /**Si el producto no esta en el carrito lo agrega*/
     setCart(prevState => ([
       ...prevState,
       {
         ...product,
-        quantity: 1
+        quantity: 1,
+        color: color
       }
     ]))
   }
@@ -55,7 +59,7 @@ const cartTotal = cart ? cart.reduce((acum, val ) =>
 ) : 0
 /**********************************************VACIAR EL CARRITO*********************************** */
   const clearCart = () => {
-    setCart([]);
+    setCart([])
   }
 
 /**********************************************CALCULAR ENVIO*********************************** */
@@ -110,7 +114,7 @@ const orderDetail = () => {
   })
     .then((res) => res.json())
     .then((info) => {
-      // return console.log(info);
+      //return console.log(info);
       {
         if (info.error) {
           setErrorsBack(info.error);
@@ -143,6 +147,8 @@ const orderDetail = () => {
         shipping,
         setShipping,
         setOrderDetailData,
+        color,
+        setColor,
       }}
     >
       {children}

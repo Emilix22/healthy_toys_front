@@ -3,7 +3,7 @@ import { CartContext } from "../../context/cartContext";
 import { AppContext } from "../../context/appContext";
 import { initMercadoPago, Wallet } from '@mercadopago/sdk-react'
 import "./Order.css";
-import logo from "../../assets/logoHT.svg";
+import logo from "../../assets/Healthy-Toys-Logo+text-22.png";
 import Loader from "../Loader/Loader"
 const BASE_URL = import.meta.env.VITE_REACT_BASE_URL;
 const MPID = import.meta.env.VITE_REACT_MPID;
@@ -75,7 +75,7 @@ function Order() {
             {orderDetailData.data.orderItems.map((item) => {
               return (
                 <li>
-                  {item.quantity} {item.name}
+                  {item.quantity} {item.name} {item.color}
                 </li>
               );
             })}

@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import EmailIcon from "@mui/icons-material/Email";
 import YoutubeIcon from "@mui/icons-material/Youtube";
-import logo from "../../assets/logoRedondo.svg";
+import logo from "../../assets/Healthy-Toys-Logo-2.png";
 import "./Footer.css";
 
 function Footer() {
@@ -24,11 +23,8 @@ function Footer() {
         <article className="articles_footer">
           <h3>Contactos</h3>
           <div className="contacts_footer">
-            <Link id="instagram" to="https://instagram.com" target="_blank">
+            <Link id="instagram" to="https://www.instagram.com/bouncer.juego/" target="_blank">
               <InstagramIcon />
-            </Link>
-            <Link id="fscebook" to="https://facebook.com" target="_blank">
-              <FacebookIcon />
             </Link>
             <Link id="youtube" to="https://www.youtube.com/@HealthyToys" target="_blank">
               <YoutubeIcon />
@@ -49,7 +45,7 @@ function Footer() {
               to="#"
               target="_blank"
               onClick={(e) => {
-                window.location.href = "mailto:torresdragon@hotmail.com";
+                window.location.href = "mailto:consultas@healthytoys.online";
                 e.preventDefault();
               }}
             >

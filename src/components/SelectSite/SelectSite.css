@@ -14,14 +14,6 @@
     opacity: 1;
   }
 }
-
-#myVideo {
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  min-width: 100%;
-  min-height: 100%;
-}
 .select_site_container {
   position: fixed;
   right: 0;
@@ -34,6 +26,13 @@
   animation: iniciar;
   animation-duration: 0.9s;
 }
+.select_site_container__backVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
 .select {
   display: flex;
   align-items: center;
@@ -43,7 +42,7 @@
   animation: iniciar;
   animation-duration: 1.5s;
 }
-.select a {
+.select__link {
   position: relative;
   color: var(--colora);
   padding: 10px;
@@ -57,14 +56,8 @@
   height: 100vh;
   width: 30%;
 }
-.select a span {
+.select__span {
   font-size: 1rem;
-}
-#linkTutorials:hover {
-  background-color: rgba(255, 103, 0, 0.75);
-}
-#linkEcommerce:hover {
-  background-color: rgba(0, 78, 152, 0.75);
 }
 .logoHello {
   height: 100vh;
@@ -75,11 +68,11 @@
   gap: 40px;
   align-items: center;
 }
-.select img {
+.logoHello__img {
   position: relative;
   max-width: 100%;
 }
-.select h1 {
+.logoHello__welcome {
   position: relative;
   color: var(--color1);
   font-size: 1.5rem;
@@ -87,19 +80,25 @@
 }
 
 @media (min-width: 426px) {
-  .select h1 {
+  .logoHello__welcome {
     font-size: 3rem;
   }
   .logoHello {
     width: 30%;
   }
-  .select a {
+  .select__link {
     width: 35%;
   }
 }
 
 @media (min-width: 769px) {
-  .select h1 {
+  .logoHello__welcome {
     font-size: 4rem;
+  }
+  .select__linkTutorials:hover {
+    background-color: rgba(255, 103, 0, 0.75);
+  }
+  .select__linkEcommerce:hover {
+    background-color: rgba(0, 78, 152, 0.75);
   }
 }

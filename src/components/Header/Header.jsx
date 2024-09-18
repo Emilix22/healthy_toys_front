@@ -5,7 +5,7 @@ import "./Header.css";
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import logo from "../../assets/logoHT.svg";
+import logo from "../../assets/Healthy-Toys-Logo+text-22.png";
 import scrollHeader from "../../services/scrollHeader";
 import menuActive from "../../services/menuActive";
 
@@ -54,14 +54,6 @@ function Header() {
           user ?
           <ul>
           <Link to="#" onClick={logout}>Salir</Link>
-          {/* <div className={`avatar_name ${isOpen && "open"}`}>       
-            <div className="item">
-                <span>{user.name+" "+user.surname}</span>
-            </div>
-            <div className="item">
-              <img className="avatar" src={`http://localhost:3000/img/users/${user.avatar}`} alt="userAvatar" />
-            </div>
-          </div> */}
           </ul>
           :
           <ul>
@@ -71,13 +63,13 @@ function Header() {
           <Link to="/e_commerce/login" onClick={menuActive}>Iniciar Sesión</Link>
         </ul>
         }
-        {/* {
-          userData && <span id="userWelcome">Bienvenid@ {userData.data.name}</span>
-        } */}
-          
         {
-          userData && userData.data.privileges_id === 1 ? <Link to="/e_commerce/product/create" onClick={menuActive}>Crear Producto</Link> : ""
+          userData && <span id="userWelcome">Bienvenid@ {userData.data.name}</span>
         }
+          
+        {/* {
+          userData && userData.data.privileges_id === 1 ? <Link to="/e_commerce/product/create" onClick={menuActive}>Crear Producto</Link> : ""
+        } */}
           
       </nav>
       <Link className="cartIcon" to="/e_commerce/cart" onClick={menuActive}>

@@ -1,21 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "./Carrousel.css";
-import img1 from "../../assets/img1.jpg";
 import banerImg from "../../assets/banerImg.jpg";
 import banerImg1 from "../../assets/banerImg1.jpg";
 import banerImg2 from "../../assets/banerImg2.jpg";
 import banerImg3 from "../../assets/banerImg3.jpg";
-import img2 from "../../assets/img2.jpg";
-import img3 from "../../assets/img3.jpg";
-import img4 from "../../assets/img4.jpg";
-import { Link } from "react-router-dom";
 import carrouselMove from "../../services/carrouselMove";
 import simulateMouseClick from "../../services/simulateMouseClick";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 function Carrousel() {
+
   const [thumbnail, setThumbnail] = useState();
   const [thumbnailItems, setThumbnailItems] = useState();
   const rightButton = document.querySelector(".next");
@@ -39,16 +32,10 @@ function Carrousel() {
             <img src={banerImg} alt="banner-image" />
 
             <div className="content">
-              {/* <div className="title">DESTACADO</div> */}
               <div className="type">BOUNCER</div>
               <div className="description">
               ¡Mejora tu juego con nuestro innovador producto de entrenamiento de fútbol! Diseñado para perfeccionar la técnica y la destreza en ambas piernas, este equipo es ideal para jugadores de todos los niveles. Con ejercicios específicos y materiales de alta calidad, podrás desarrollar un control del balón impecable y una precisión en tus pases y tiros que te hará destacar en el campo. ¡No esperes más para llevar tu habilidad al siguiente nivel! ⚽💪
               </div>
-              {/* <div className="button">
-                <button>
-                  <AddShoppingCartIcon />
-                </button>
-              </div> */}
             </div>
           </article>
 
@@ -56,16 +43,10 @@ function Carrousel() {
             <img src={banerImg1} alt="" />
 
             <div className="content">
-              {/* <div className="title">DESTACADO</div> */}
               <div className="type">BOUNCER</div>
               <div className="description">
               ¡Mejora tu juego con nuestro innovador producto de entrenamiento de fútbol! Diseñado para perfeccionar la técnica y la destreza en ambas piernas, este equipo es ideal para jugadores de todos los niveles. Con ejercicios específicos y materiales de alta calidad, podrás desarrollar un control del balón impecable y una precisión en tus pases y tiros que te hará destacar en el campo. ¡No esperes más para llevar tu habilidad al siguiente nivel! ⚽💪
               </div>
-              {/* <div className="button">
-                <button>
-                  <AddShoppingCartIcon />
-                </button>
-              </div> */}
             </div>
           </article>
 
@@ -73,16 +54,10 @@ function Carrousel() {
             <img src={banerImg2} alt="" />
 
             <div className="content">
-              {/* <div className="title">DESTACADO</div> */}
               <div className="type">BOUNCER</div>
               <div className="description">
               ¡Mejora tu juego con nuestro innovador producto de entrenamiento de fútbol! Diseñado para perfeccionar la técnica y la destreza en ambas piernas, este equipo es ideal para jugadores de todos los niveles. Con ejercicios específicos y materiales de alta calidad, podrás desarrollar un control del balón impecable y una precisión en tus pases y tiros que te hará destacar en el campo. ¡No esperes más para llevar tu habilidad al siguiente nivel! ⚽💪
               </div>
-              {/* <div className="button">
-                <button>
-                  <AddShoppingCartIcon />
-                </button>
-              </div> */}
             </div>
           </article>
 
@@ -90,16 +65,10 @@ function Carrousel() {
             <img src={banerImg3} alt="" />
 
             <div className="content">
-              {/* <div className="title">DESTACADO</div> */}
               <div className="type">BOUNCER</div>
               <div className="description">
               ¡Mejora tu juego con nuestro innovador producto de entrenamiento de fútbol! Diseñado para perfeccionar la técnica y la destreza en ambas piernas, este equipo es ideal para jugadores de todos los niveles. Con ejercicios específicos y materiales de alta calidad, podrás desarrollar un control del balón impecable y una precisión en tus pases y tiros que te hará destacar en el campo. ¡No esperes más para llevar tu habilidad al siguiente nivel! ⚽💪
               </div>
-              {/* <div className="button">
-                <button>
-                  <AddShoppingCartIcon />
-                </button>
-              </div> */}
             </div>
           </article>
         </section>

@@ -13,6 +13,7 @@ function CartItem(props) {
     <li className="cartItem_container">
       <img src={props.img} alt="imgProduct" />
       <h4>{props.name}</h4>
+      <span>Color: {props.color}</span>
       <span>${props.price}</span>
       <div className="quantityInCart">
         <small>Cantidad: {props.quantity}</small>
@@ -27,7 +28,7 @@ function Cart() {
   const {
     user,
   } = useContext(AppContext);
-  const { cart, removeFromCart, clearCart, addToCart, cartTotal, shipping, setShipping, calculateShipping, orderCreate, errorsBack } = useContext(CartContext);
+  const { cart, setCart, removeFromCart, clearCart, addToCart, cartTotal, shipping, setShipping, calculateShipping, orderCreate, errorsBack } = useContext(CartContext);
   const [shippingOption, setShippingOption] = useState("");
 
   const alertNoProducts = () => {
@@ -50,16 +51,6 @@ function Cart() {
     });
   }
 
-  const alertNoLogin = () => {
-    return Swal.fire({
-      position: "center",
-      width: 400,
-      icon: "warning",
-      title: `Debe iniciar sesión para poder pagar`,
-      showConfirmButton: true,
-    });
-  }
-
   useEffect(() => {
     shippingOption === "postOffice" 
     ? setShipping(500) 
@@ -67,7 +58,7 @@ function Cart() {
     ? setShipping(1000) 
     : setShipping(0)
   }, [shippingOption])
-  
+
   return (
     <main className="cart_container">
       <h1>Carrito de Compras</h1>
@@ -81,9 +72,7 @@ function Cart() {
               return alertNoProducts();
             } else if (!shippingOption) {
               return alertNoShipping();
-            } else if (!user) {
-              return alertNoLogin();
-            }
+            } 
             return orderCreate();
           }}
         >
@@ -107,12 +96,12 @@ function Cart() {
       <h3>Envio: ${shipping ? new Intl.NumberFormat().format(shipping) : 0}</h3>
       <h2>TOTAL: ${new Intl.NumberFormat().format(cartTotal + shipping)}</h2>
       <ul>
-        {cart.map((product) => {
-          // setOrderData(product)
+        { cart.map((product) => {
           return (
             <CartItem
               img={`${BASE_URL}/img/products/${product.image1}`}
               name={product.name}
+              color={product.color}
               price={new Intl.NumberFormat().format(product.price)}
               quantity={product.quantity}
               addToCart={() => addToCart(product)}

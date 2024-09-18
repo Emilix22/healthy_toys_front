@@ -12,6 +12,7 @@ export const AppContextProvider = ({ children }) => {
 
   const [user, setUser] = useState("");
   const [userData, setUserData] = useState("");
+  const [userPhone, setUserPhone] = useState("");
   const [errorsBack, setErrorsBack] = useState(); //errores back
   const history = useNavigate();
 
@@ -34,6 +35,7 @@ export const AppContextProvider = ({ children }) => {
     event.preventDefault();
     setUser(null);
     setUserData(null)
+    setCart([])
     // document.cookie.replace("");
     history("/");
   };
@@ -49,6 +51,8 @@ export const AppContextProvider = ({ children }) => {
         history,
         getUserData,
         logout,
+        userPhone,
+        setUserPhone,
       }}
     >
       {children}
