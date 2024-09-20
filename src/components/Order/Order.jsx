@@ -14,7 +14,7 @@ function Order() {
   const { userData } = useContext(AppContext);
   const [isLoading, setIsLoading] = useState(false);
   const [preferenceId, setPreferenceId] = useState(null);
-  const [orderData, setOrderData] = useState({ title: `Healthy Toys (orden: ${order.data.order.id_order})`, price: order.data.order.total + order.data.order.shipping_method, quantity: 1 });
+  const [orderData, setOrderData] = useState({ title: `Healthy Toys (orden: ${order.data.order.id_order})`, price: order.data.order.total + order.data.order.shipping_method, quantity: 1, id_order: order.data.order.id_order });
   const orderUpdated = new Date(order.data.order.updatedAt);
   initMercadoPago(`${MPID}`, { locale: 'es-AR' });
 
@@ -122,7 +122,7 @@ function Order() {
       )}
       {preferenceId && (
         <div className="buttonMP">
-          <Wallet initialization={{ preferenceId }} />
+          <Wallet initialization={{ preferenceId, redirectMode: "modal" }} />
         </div>
       )}
     </main>

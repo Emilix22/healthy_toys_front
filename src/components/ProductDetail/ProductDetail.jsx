@@ -103,9 +103,11 @@ function ProductDetail() {
             >
               <option value="no_select">Seleccione...</option>
               <option value="personalizado">Personalizado</option>
+              <option value="amarillo">Amarillo</option>
               <option value="azul">Azul</option>
               <option value="blanco">Blanco</option>
               <option value="celeste">Celeste</option>
+              <option value="naranja">Naranja</option>
               <option value="negro">Negro</option>
               <option value="rojo">Rojo</option>
               <option value="verde">Verde</option>
@@ -114,6 +116,7 @@ function ProductDetail() {
               color === "personalizado" && (
                 <div className="persoMessaje">
               <label>Al finalizar la compra te contactaremos via Email por los detalles de la personalización de tu BOUNCER</label>
+              <small>(*)Tené en cienta que la personalización puede generar un costo extra</small>
             </div>
               )
             }

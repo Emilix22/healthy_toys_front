@@ -95,6 +95,7 @@ function Cart() {
       <h3>Productos: ${new Intl.NumberFormat().format(cartTotal)}</h3>
       <h3>Envio: ${shipping ? new Intl.NumberFormat().format(shipping) : 0}</h3>
       <h2>TOTAL: ${new Intl.NumberFormat().format(cartTotal + shipping)}</h2>
+      <small>El envio llegará entre los 15 y 20 dias posteriores a la fecha de pago</small>
       <ul>
         { cart.map((product) => {
           return (
