@@ -49,12 +49,12 @@ function Filters({ setFilters, filters }) {
                   })}
         </select>
       </article>
-      <article id="search_section">
+      {/* <article id="search_section">
         <label className="search_icon" htmlFor="search">
           <SearchIcon />
         </label>
         <input type="text" name="search" />
-      </article>
+      </article> */}
     </section>
   );
 }

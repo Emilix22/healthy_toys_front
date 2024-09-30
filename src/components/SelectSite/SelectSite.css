@@ -70,7 +70,7 @@
 }
 .logoHello__img {
   position: relative;
-  max-width: 100%;
+  max-width: 200%;
 }
 .logoHello__welcome {
   position: relative;
@@ -94,6 +94,9 @@
 @media (min-width: 769px) {
   .logoHello__welcome {
     font-size: 4rem;
+  }
+  .logoHello__img {
+    max-width: 100%;
   }
   .select__linkTutorials:hover {
     background-color: rgba(255, 103, 0, 0.75);

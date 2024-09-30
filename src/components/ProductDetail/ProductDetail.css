@@ -16,6 +16,7 @@
 .detail-container .title {
   color: var(--color1);
   -webkit-text-stroke: 1px var(--color3);
+  margin-top: 5%;
 }
 .detail-container .subTitle {
   color: var(--color3);
