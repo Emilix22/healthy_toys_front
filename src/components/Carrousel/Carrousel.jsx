@@ -36,7 +36,9 @@ function Carrousel() {
               <div className="description">
               ¡Mejora tu juego con nuestro innovador producto de entrenamiento de fútbol! Diseñado para perfeccionar la técnica y la destreza en ambas piernas, este equipo es ideal para jugadores de todos los niveles. Con ejercicios específicos y materiales de alta calidad, podrás desarrollar un control del balón impecable y una precisión en tus pases y tiros que te hará destacar en el campo. ¡No esperes más para llevar tu habilidad al siguiente nivel! ⚽💪
               </div>
+            <div className="button"><button>Tienda</button></div>
             </div>
+              
           </article>
 
           <article className="item">
@@ -47,6 +49,7 @@ function Carrousel() {
               <div className="description">
               ¡Mejora tu juego con nuestro innovador producto de entrenamiento de fútbol! Diseñado para perfeccionar la técnica y la destreza en ambas piernas, este equipo es ideal para jugadores de todos los niveles. Con ejercicios específicos y materiales de alta calidad, podrás desarrollar un control del balón impecable y una precisión en tus pases y tiros que te hará destacar en el campo. ¡No esperes más para llevar tu habilidad al siguiente nivel! ⚽💪
               </div>
+              <div className="button"><button>Tienda</button></div>
             </div>
           </article>
 
@@ -58,6 +61,7 @@ function Carrousel() {
               <div className="description">
               ¡Mejora tu juego con nuestro innovador producto de entrenamiento de fútbol! Diseñado para perfeccionar la técnica y la destreza en ambas piernas, este equipo es ideal para jugadores de todos los niveles. Con ejercicios específicos y materiales de alta calidad, podrás desarrollar un control del balón impecable y una precisión en tus pases y tiros que te hará destacar en el campo. ¡No esperes más para llevar tu habilidad al siguiente nivel! ⚽💪
               </div>
+              <div className="button"><button>Tienda</button></div>
             </div>
           </article>
 
@@ -69,6 +73,7 @@ function Carrousel() {
               <div className="description">
               ¡Mejora tu juego con nuestro innovador producto de entrenamiento de fútbol! Diseñado para perfeccionar la técnica y la destreza en ambas piernas, este equipo es ideal para jugadores de todos los niveles. Con ejercicios específicos y materiales de alta calidad, podrás desarrollar un control del balón impecable y una precisión en tus pases y tiros que te hará destacar en el campo. ¡No esperes más para llevar tu habilidad al siguiente nivel! ⚽💪
               </div>
+              <div className="button"><button>Tienda</button></div>
             </div>
           </article>
         </section>
