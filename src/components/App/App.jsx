@@ -12,6 +12,8 @@ import Cart from "../Cart/Cart";
 import ProductCreate from "../ProductCreate/ProductCreate";
 import ProductDetail from "../ProductDetail/ProductDetail";
 import Order from "../Order/Order";
+import Success from "../Success/Success";
+import CalcularEnvio from "../CalcularEnvio/CalcularEnvio";
 
 function App() {
   const { user, getUserData, userData } = useContext(AppContext);
@@ -71,6 +73,8 @@ function App() {
           </ProductContextProvider>
         }
       />
+      <Route path="/success" element={<Success />} />
+      <Route path="/calcular_envio" element={<CalcularEnvio />} />
     </Routes>
   );
 }
